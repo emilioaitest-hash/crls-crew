@@ -260,10 +260,10 @@ p:last-child { margin-bottom: 0; }
   gap: 1.25rem;
   align-items: center;
 }
-.nav-prog .bar {
+.nav-prog .prog-track {
   width: 5rem; height: 1px; background: rgba(244,241,234,.25); position: relative;
 }
-.nav-prog .bar i {
+.nav-prog .prog-track i {
   position: absolute; inset: 0 auto 0 0; width: var(--p, 0%);
   background: var(--dawn); transition: width .15s linear;
 }
@@ -904,5 +904,5 @@ p:last-child { margin-bottom: 0; }
 /* Mobile: the chapter readout must not clip at the viewport edge */
 @media (max-width: 40rem) {
   .nav-prog #chapter-label { display: none; }
-  .nav-prog .bar { width: 3.5rem; }
+  .nav-prog .prog-track { width: 3.5rem; }
 }
