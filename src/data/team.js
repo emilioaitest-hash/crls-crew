@@ -163,7 +163,10 @@ export const SEASONS = [
 export const ARCHIVE = {
   totalRaces: 1321,
   wins: 394,
-  athletes: 186,
+  // Every name in the scraped archive is a coxswain: row2k, NEIRA and MPSRA
+  // result tables record the entry and its cox, not the full crew. Calling
+  // these "athletes" would overstate what the data contains.
+  coxswains: 186,
   firstYear: 2007,
   lastYear: 2026,
   championshipRaces: 571,
@@ -177,7 +180,7 @@ export const MILESTONES_2026 = [
   {
     title: 'Girls 1V to Youth Nationals',
     detail: 'Third at the USRowing Northeast Regionals in 7:27.54 — the second time in school history a girls crew has gone to Nationals. The first was 2022.',
-    crew: ['Laurel Moldrem', 'Sinéad O\'Gorman-Jones', 'Imogen Wu', 'Isla Agnew'],
+    crew: ['Laurel Moldrem', 'Sinead O\'Gorman-Jones', 'Imogen Wu', 'Isla Agnew'],
     cox: 'Ada LaMaster',
     time: '7:27.54',
     place: 3,

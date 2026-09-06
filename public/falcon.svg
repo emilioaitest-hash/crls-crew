@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!--
+    CRLS falcon with crossed oars, drawn from the team's own mark.
+    Simplified to read at 16px: the falcon's head in profile facing left,
+    the swept wing below, and two oars crossed behind it.
+  -->
+  <rect width="64" height="64" fill="#0a0c0e"/>
+  <g transform="translate(32,33)">
+    <!-- crossed oars -->
+    <g stroke="#f4f1ea" stroke-width="2.6" stroke-linecap="round">
+      <line x1="-21" y1="16" x2="19" y2="-14"/>
+      <line x1="21" y1="16" x2="-19" y2="-14"/>
+    </g>
+    <!-- blades -->
+    <ellipse cx="20.5" cy="-15.5" rx="4.6" ry="3.1" fill="#c9683a" transform="rotate(-36 20.5 -15.5)"/>
+    <ellipse cx="-20.5" cy="-15.5" rx="4.6" ry="3.1" fill="#c9683a" transform="rotate(36 -20.5 -15.5)"/>
+    <!-- falcon: head in profile, facing left, over a swept wing -->
+    <path fill="#f4f1ea" d="
+      M -14.5 -3.2
+      C -12.4 -10.6, -5.6 -14.8, 1.6 -13.4
+      C 6.4 -12.4, 9.6 -9.0, 10.8 -4.6
+      L 16.4 -6.2 L 11.4 -1.0
+      C 11.8 4.6, 8.6 9.6, 3.2 11.6
+      C -3.6 14.2, -11.4 11.0, -14.4 4.4
+      C -15.6 1.8, -15.4 -0.8, -14.5 -3.2 Z"/>
+    <!-- beak -->
+    <path fill="#c9683a" d="M -14.6 -2.4 L -21.6 0.4 L -14.2 2.6 Z"/>
+    <!-- eye -->
+    <circle cx="-7.4" cy="-3.4" r="2.0" fill="#0a0c0e"/>
+  </g>
+</svg>

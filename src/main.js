@@ -195,14 +195,6 @@ function initHero() {
 /* ================================================================== *
  * Fleet scene — inspectable, with named views
  * ================================================================== */
-const FLEET_VIEWS = {
-  quarter: { pos: [5.4, 2.3, 5.6], look: [0, -0.10, 0], fov: 42 },
-  side:    { pos: [0, 0.0, 9.6],   look: [0, 0, 0],     fov: 46 },
-  plan:    { pos: [0, 9.2, 0.01],  look: [0, 0, 0],     fov: 46 },
-  bow:     { pos: [-5.4, 0.55, 0.9], look: [-3.4, -0.02, 0], fov: 34 },
-  cockpit: { pos: [1.5, 0.95, 1.5],  look: [0.35, -0.08, 0], fov: 44 },
-};
-
 function initFleet() {
   const canvas = document.getElementById('fleet-canvas');
   if (!canvas) return;
@@ -215,22 +207,69 @@ function initFleet() {
   const { pivot, env } = makeBoat(renderer);
   scene.environment = env;
   scene.add(pivot);
-  const key = new THREE.DirectionalLight(0xffffff, 1.25); key.position.set(4, 7, 5);
-  const rim = new THREE.DirectionalLight(0xbcd4ff, 1.1); rim.position.set(-6, 2.5, -5);
-  scene.add(key, rim);
+  // Brighter than the hero: this is an inspection stage, so the hull should be
+  // fully legible rather than dramatically lit.
+  const key = new THREE.DirectionalLight(0xffffff, 2.3); key.position.set(5, 8, 5);
+  const rim = new THREE.DirectionalLight(0xbcd4ff, 1.9); rim.position.set(-6, 3, -5);
+  const fill = new THREE.DirectionalLight(0xe8eef7, 0.8); fill.position.set(0, -2, 6);
+  scene.add(key, rim, fill);
 
-  const cam = new THREE.PerspectiveCamera(42, 1, 0.05, 200);
-  let view = FLEET_VIEWS.quarter;
+  const cam = new THREE.PerspectiveCamera(34, 1, 0.05, 200);
+  let viewName = 'quarter';
   let drag = 0, targetDrag = 0;
+
+  // Distance needed to fit `span` metres across the frame at the current FOV
+  // and aspect. Framing the boat by its own length keeps every view correctly
+  // composed at any stage size, instead of guessing camera positions.
+  function fitDistance(span, fovDeg, aspect, vertical) {
+    const fov = THREE.MathUtils.degToRad(fovDeg);
+    const half = span / 2;
+    if (vertical) return half / Math.tan(fov / 2);
+    const hFov = 2 * Math.atan(Math.tan(fov / 2) * aspect);
+    return half / Math.tan(hFov / 2);
+  }
 
   function layout() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
     renderer.setSize(w, h, false);
-    cam.aspect = w / h;
-    cam.fov = view.fov * (w < 640 ? 1.22 : 1);
-    cam.position.set(...view.pos);
-    cam.lookAt(...view.look);
+    const aspect = w / h;
+    cam.aspect = aspect;
+
+    const L = SPEC.loa;
+    const narrow = w < 700;
+    const pad = narrow ? 1.28 : 1.14;   // headroom around the boat
+
+    if (viewName === 'side') {
+      cam.fov = 34;
+      const d = fitDistance(L * pad, cam.fov, aspect, false);
+      cam.position.set(0, 0.05, d);
+      cam.lookAt(0, 0.02, 0);
+    } else if (viewName === 'plan') {
+      cam.fov = 34;
+      const d = fitDistance(L * pad, cam.fov, aspect, false);
+      cam.position.set(0, d, 0.01);
+      cam.lookAt(0, 0, 0);
+    } else if (viewName === 'quarter') {
+      cam.fov = 34;
+      // A 24:1 object seen on a diagonal will always fight a letterbox frame.
+      // Swing the camera much closer to broadside (a shallow three-quarter)
+      // and drop it near the waterline: the boat then lies almost along the
+      // frame's long axis, which is the only way it fits whole while still
+      // reading as three-dimensional. Both oars are inside `rigged`.
+      const rigged = L * 1.16;
+      const d = fitDistance(rigged * (narrow ? 1.20 : 1.02), cam.fov, aspect, false);
+      cam.position.set(d * 0.20, d * 0.155, d * 0.90);
+      cam.lookAt(0, -0.01, 0);
+    } else if (viewName === 'bow') {
+      cam.fov = 30;
+      cam.position.set(-L * 0.44, 0.55, 1.05);
+      cam.lookAt(-L * 0.24, -0.02, 0);
+    } else {
+      cam.fov = 38;
+      cam.position.set(1.7, 0.86, 1.7);
+      cam.lookAt(0.30, -0.06, 0);
+    }
     cam.updateProjectionMatrix();
   }
 
@@ -269,8 +308,10 @@ function initFleet() {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.view-tab').forEach((b) => b.setAttribute('aria-pressed', 'false'));
       btn.setAttribute('aria-pressed', 'true');
-      view = FLEET_VIEWS[btn.dataset.view] || FLEET_VIEWS.quarter;
+      viewName = btn.dataset.view || 'quarter';
       targetDrag = 0;
+      drag = 0;
+      pivot.rotation.y = 0;
       layout();
     });
   });
@@ -501,6 +542,19 @@ function initScroll(hero) {
   const showLines = () => lines.forEach((s) => s.classList.add('shown'));
   if (reduced) {
     showLines();
+    // With motion reduced there is no reveal choreography at all: show every
+    // section, fill every counter, and draw the chart immediately. Leaving this
+    // to the scroll tick stranded the page at one visible section.
+    pending.forEach((n) => n.classList.add('in'));
+    pending = [];
+    document.querySelectorAll('[data-count]').forEach((el) => {
+      el.textContent = (+el.dataset.count).toLocaleString();
+    });
+    counters = [];
+    if (chart) {
+      chartDone = true;
+      [...chart.children].forEach((c) => c.classList.add('in'));
+    }
   } else {
     lines.forEach((s, i) => { s.style.transitionDelay = `${0.10 + i * 0.09}s`; });
     setTimeout(showLines, 60);

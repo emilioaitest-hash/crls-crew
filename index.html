@@ -4,8 +4,43 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CRLS Rowing — At Home on the Charles</title>
-<meta name="description" content="Cambridge Rindge & Latin School crew: a no-fee public school program racing New England's prep schools on the Charles River. 1,321 races, 2007–2026.">
+<meta name="description" content="Cambridge Rindge & Latin School crew: a no-fee public high school program racing New England's prep schools on the Charles River. 1,321 races on record, 2007–2026.">
 <meta name="theme-color" content="#0a0c0e">
+<link rel="icon" href="/falcon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/falcon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="CRLS Rowing — At Home on the Charles">
+<meta property="og:description" content="A no-fee public high school crew program in Cambridge, Massachusetts, racing New England's prep schools. 1,321 races on record.">
+<meta property="og:image" content="/img/DOXG__QDz1p.jpg">
+<meta property="og:image:alt" content="CRLS novice squad at the Cambridge Boat Club, oars held horizontally across the frame">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CRLS Rowing — At Home on the Charles">
+<meta name="twitter:description" content="A no-fee public high school crew program racing New England's prep schools. 1,321 races on record.">
+<meta name="twitter:image" content="/img/DOXG__QDz1p.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsTeam",
+  "name": "Cambridge Rindge & Latin School Rowing",
+  "alternateName": "CRLS Crew",
+  "sport": "Rowing",
+  "url": "https://crlsrowing.org/",
+  "sameAs": ["https://www.instagram.com/crlscrew/"],
+  "memberOf": [
+    { "@type": "SportsOrganization", "name": "New England Interscholastic Rowing Association" },
+    { "@type": "SportsOrganization", "name": "Massachusetts Public School Rowing Association" }
+  ],
+  "location": {
+    "@type": "Place",
+    "name": "Cambridge Boat Club",
+    "address": { "@type": "PostalAddress", "addressLocality": "Cambridge", "addressRegion": "MA", "addressCountry": "US" }
+  }
+}
+</script>
+
 <link rel="preload" href="/fonts/BigShouldersDisplay.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/src/styles.css">
@@ -53,7 +88,7 @@
       </div>
       <div class="hero-stat" data-reveal data-delay="2">
         <div class="n" data-count="186">0</div>
-        <div class="l">Named athletes</div>
+        <div class="l">Coxswains named</div>
       </div>
       <div class="hero-stat" data-reveal data-delay="3">
         <div class="n">$0</div>
@@ -90,7 +125,7 @@
 
 <figure class="plate bleed" data-reveal>
   <img src="/img/DOXG__QDz1p.jpg" alt="Fourteen novice rowers and a coach standing in a line on gravel, each holding a single long black oar horizontally" loading="lazy" decoding="async">
-  <figcaption class="wrap">Novice squad, oars up. Photograph from the team's own account.</figcaption>
+  <figcaption class="wrap">Novice squad at the Cambridge Boat Club, oars up. <span class="credit">Photograph &copy; @crlscrew</span></figcaption>
 </figure>
 
 <!-- ================================================================= -->
@@ -219,30 +254,39 @@
     <div class="chapter-mark"><span class="num">05</span><span>The Fleet</span></div>
 
     <div class="fleet-grid">
-      <div>
-        <canvas id="fleet-canvas" aria-label="Interactive three-dimensional model of the Pocock Hypercarbon Comp K4+" role="img"></canvas>
-        <div class="view-tabs" role="group" aria-label="Boat view">
-          <button class="view-tab" data-view="quarter" aria-pressed="true">Three-quarter</button>
-          <button class="view-tab" data-view="side" aria-pressed="false">Profile</button>
-          <button class="view-tab" data-view="plan" aria-pressed="false">Plan</button>
-          <button class="view-tab" data-view="bow" aria-pressed="false">Bow</button>
-          <button class="view-tab" data-view="cockpit" aria-pressed="false">Cockpit</button>
-        </div>
+      <div class="boat-stage">
+        <canvas id="fleet-canvas" aria-label="Interactive three-dimensional model of the Pocock Hypercarbon Comp K4+ racing shell. Use the view buttons below to change angle." role="img"></canvas>
+        <div class="stage-hint">Drag to rotate</div>
       </div>
 
-      <div>
-        <div class="boat-name" data-reveal>Seldon<br>Wylde</div>
-        <div class="boat-meta" data-reveal data-delay="1">Pocock Hypercarbon Comp K4+ &middot; Coxed four</div>
-        <p data-reveal data-delay="2" style="margin-top:1.5rem" id="boat-notes"></p>
-        <table class="spec-table" id="spec-table" data-reveal data-delay="2">
-          <caption class="micro" style="text-align:left;padding-bottom:.75rem">Specification</caption>
-        </table>
-        <a class="src" href="https://www.pocock.com/shells/hypercarbon-comp-k4" target="_blank" rel="noopener" style="display:inline-block;margin-top:1.25rem">Pocock Racing Shells</a>
-        <p class="note">
-          The model is built from published Pocock dimensions and the section-area
-          curve in US Patent 5,474,008. Hull geometry is checked numerically against
-          both before it is drawn.
-        </p>
+      <div class="view-tabs" role="group" aria-label="Boat view">
+        <button class="view-tab" data-view="quarter" aria-pressed="true">Three-quarter</button>
+        <button class="view-tab" data-view="side" aria-pressed="false">Profile</button>
+        <button class="view-tab" data-view="plan" aria-pressed="false">Plan</button>
+        <button class="view-tab" data-view="bow" aria-pressed="false">Bow</button>
+        <button class="view-tab" data-view="cockpit" aria-pressed="false">Cockpit</button>
+      </div>
+
+      <div class="fleet-detail">
+        <div>
+          <div class="boat-name" data-reveal>Seldon<br>Wylde</div>
+          <div class="boat-meta" data-reveal data-delay="1">Pocock Hypercarbon Comp K4+ &middot; Coxed four</div>
+          <p data-reveal data-delay="2" style="margin-top:1.5rem" id="boat-notes"></p>
+          <a class="src" href="https://www.pocock.com/shells/hypercarbon-comp-k4" target="_blank" rel="noopener" style="display:inline-block;margin-top:1.25rem">Pocock Racing Shells</a>
+        </div>
+
+        <div>
+          <table class="spec-table" id="spec-table" data-reveal>
+            <caption class="micro" style="text-align:left;padding-bottom:.75rem">Specification</caption>
+          </table>
+          <p class="note">
+            The model is built from published Pocock dimensions and the
+            section-area curve in US Patent 5,474,008. Hull geometry is checked
+            numerically against both before it is drawn: entry and exit angles,
+            displacement, draft, freeboard and prismatic coefficient all sit
+            inside the real boat's range.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -290,7 +334,7 @@
 
 <figure class="plate bleed" data-reveal>
   <img src="/img/DY-7vl_HNW6.jpg" alt="Four rowers seated in their black hull at the dock, holding up bronze NEIRA medals" loading="lazy" decoding="async">
-  <figcaption class="wrap">Boys four with New England medals &mdash; the third and fourth in program history.</figcaption>
+  <figcaption class="wrap">Boys four at the dock with New England medals &mdash; the third and fourth in program history. <span class="credit">Photograph &copy; row2k &middot; permission required before publication</span></figcaption>
 </figure>
 
 <!-- ================================================================= -->
