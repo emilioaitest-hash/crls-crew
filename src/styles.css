@@ -83,6 +83,12 @@
    reset
    ========================================================================== */
 *, *::before, *::after { box-sizing: border-box; }
+
+/* Grid and flex items default to min-width:auto, so a long word or a wide
+   child can push its track past the container and take the whole document
+   with it. Every horizontal-overflow bug on this site has had this cause. */
+.facts, .road li, .tl-item, .split, .result, .heat-row, .progression { min-width: 0; }
+.facts > *, .road li > *, .tl-item > *, .split > *, .heat-row > * { min-width: 0; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
@@ -956,7 +962,7 @@ p:last-child { margin-bottom: 0; }
 .facts {
   display: grid;
   width: 100%;
-  max-width: 32rem;
+  max-width: min(100%, 32rem);
   /* Both columns size to content and sit left. The previous right-aligned
      value column with a border-bottom produced a restaurant-menu leader —
      "Charles" stranded 305px from its own label behind an underline, which
@@ -1127,6 +1133,12 @@ html:not(.js-reveal) .school { opacity: 1; transform: none; }
    eight flex lanes measured 602px inside a 390px screen. Stack the label and
    let the lanes wrap. */
 @media (max-width: 40rem) {
+  /* Facts stack: a two-column definition list cannot hold a measure on a
+     390px screen without pushing the document wider than the viewport. */
+  .facts { grid-template-columns: 1fr; gap: .15rem; }
+  .facts dt { padding-top: .5rem; }
+  .facts dd { padding-bottom: .35rem; border-bottom: 1px solid var(--rule-soft); }
+
   .heat-row { grid-template-columns: 1fr; gap: .5rem; }
   .heat-label { text-align: left; }
   .lanes { flex-wrap: wrap; }
