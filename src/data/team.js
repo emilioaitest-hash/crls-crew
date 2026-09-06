@@ -75,6 +75,24 @@ export const HISTORY = [
     src: SOURCES.crls,
   },
   {
+    year: '1903',
+    title: 'The fastest schoolboy crew on the river',
+    body: `Cambridge Latin wins its heat of the Interscholastic Rowing Association
+    championship in 5 minutes 33 seconds over a mile of downstream Charles, taking nine
+    seconds off the interscholastic record. Three heats went off that afternoon, four
+    crews in each. The other two were won by Boston Latin and Waltham High \u2014 all three
+    public schools.`,
+    aside: [
+      ['Distance', 'One mile, downstream'],
+      ['Time', '5:33'],
+      ['Old record beaten by', '9 seconds'],
+      ['Field', 'Three heats, four crews each'],
+      ['Heat winners', 'Cambridge Latin, Boston Latin, Waltham \u2014 all public'],
+      ['Recorded in', 'The Harvard Crimson, 28 May 1903'],
+    ],
+    src: 'https://www.thecrimson.com/article/1903/5/28/school-rowing-record-lowered-pthe-preliminary/',
+  },
+  {
     year: '1922',
     title: 'Three schools, one afternoon, in the rain',
     body: `The Harvard Crimson records Cambridge Latin, Rindge Technical and Browne &
