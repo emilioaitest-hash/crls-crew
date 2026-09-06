@@ -414,12 +414,7 @@ p:last-child { margin-bottom: 0; }
 /* ==========================================================================
    timeline
    ========================================================================== */
-.timeline {
-  position: relative;
-  /* 6 + 34 + 32 rem of tracks plus two gaps: keeps the rule the same width as
-     the widest row rather than the container. */
-  max-width: 78rem;
-}
+.timeline { position: relative; }
 .tl-item {
   display: grid;
   /* Year | prose (measured) | apparatus. The third track is what stops the
@@ -431,10 +426,10 @@ p:last-child { margin-bottom: 0; }
   border-top: 1px solid var(--rule-soft);
 }
 @media (min-width: 72rem) {
-  /* The apparatus track sizes to its content (max-content, capped) rather than
-     absorbing all remaining width. Otherwise the full-width border-top draws a
-     rule across several hundred pixels of nothing on wide screens. */
-  .tl-item { grid-template-columns: 6rem minmax(0, 34rem) minmax(0, 32rem); }
+  /* The apparatus track takes the remaining width now that it carries real
+     archival detail, so the row spans the same measure as every other block on
+     the page and the border-top has content beneath its whole span. */
+  .tl-item { grid-template-columns: 6rem minmax(0, 34rem) minmax(0, 1fr); }
 }
 .tl-aside {
   display: flex;
@@ -505,7 +500,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--mono);
   font-size: var(--t-micro);
   letter-spacing: .04em;
-  color: var(--grey-2);
+  color: var(--grey);
 }
 .lane.pub { border-color: var(--dawn); color: var(--dawn); }
 .lane.us { background: var(--dawn); color: var(--ink); border-color: var(--dawn); font-weight: 600; }
@@ -890,7 +885,7 @@ p:last-child { margin-bottom: 0; }
   /* Was --ink-3 (#1e242b) = 1.25:1, which read as a rendering fault rather
      than restraint. #3f4a55 is ~2.9:1: present as a ghost numeral, but
      legible as the thing the section is counting. */
-  color: #3f4a55;
+  color: #47535f;
   font-variant-numeric: tabular-nums;
   align-self: center;
   justify-self: end;
@@ -948,7 +943,9 @@ p:last-child { margin-bottom: 0; }
 
 /* Left-aligned prose column, as a real class rather than an inline override. */
 .narrow--flush {
-  width: min(100%, 44rem);
+  /* 36rem to match the .split measure fixed in the same round; 44rem set the
+     site's closing argument at 79 characters, the widest text on the page. */
+  width: min(100%, 36rem);
   margin-inline: 0;
 }
 
@@ -959,9 +956,13 @@ p:last-child { margin-bottom: 0; }
 .facts {
   display: grid;
   width: 100%;
-  max-width: 30rem;
-  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
-  gap: .1rem 1.25rem;
+  max-width: 32rem;
+  /* Both columns size to content and sit left. The previous right-aligned
+     value column with a border-bottom produced a restaurant-menu leader —
+     "Charles" stranded 305px from its own label behind an underline, which
+     measured as a full column while carrying almost no ink. */
+  grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+  gap: .35rem 1.5rem;
   margin: 0 0 1rem;
   font-family: var(--mono);
   font-size: var(--t-micro);
@@ -972,17 +973,28 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: .1em;
   text-transform: uppercase;
   white-space: nowrap;
+  padding-top: .1em;
+  font-size: .95em;
 }
 .facts dd {
   margin: 0;
   color: var(--bone-2);
-  text-align: right;
-  border-bottom: 1px solid var(--rule-soft);
+  text-wrap: pretty;
 }
 
 
 /* The school chips are a list and should arrive as one. */
-.school { transition-delay: calc(var(--i, 0) * 28ms); }
+.school {
+  /* A delay alone animates nothing — this needs its own transition. The chips
+     cascade from the #field parent's reveal. */
+  opacity: 0;
+  transform: translateY(.5rem);
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+  transition-delay: calc(var(--i, 0) * 28ms);
+}
+#field.in .school { opacity: 1; transform: none; }
+/* Without JS the chips are simply present. */
+html:not(.js-reveal) .school { opacity: 1; transform: none; }
 
 /* Three moments get a slower, separate curve so motion argues for what
    arrived instead of announcing that a scroll tick fired. */
@@ -1040,7 +1052,7 @@ p:last-child { margin-bottom: 0; }
    stranded in the legend where nobody connects it to a 6px sliver. */
 .bar-none {
   position: absolute;
-  bottom: 2.6rem;
+  bottom: 4.2rem;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
   writing-mode: vertical-rl;
@@ -1109,3 +1121,21 @@ p:last-child { margin-bottom: 0; }
   text-transform: uppercase; color: var(--grey-2); text-align: right;
 }
 .boat.is-built .boat-state { color: var(--dawn); }
+
+
+/* The heat diagram overflowed the viewport on phones: a 9rem label column plus
+   eight flex lanes measured 602px inside a 390px screen. Stack the label and
+   let the lanes wrap. */
+@media (max-width: 40rem) {
+  .heat-row { grid-template-columns: 1fr; gap: .5rem; }
+  .heat-label { text-align: left; }
+  .lanes { flex-wrap: wrap; }
+  .lane { flex: 1 1 30%; min-width: 0; }
+}
+
+/* A progression should progress. Four equal bordered cells rendered 12, 50, 5
+   and 5 at identical weight — the most template-shaped component on the page. */
+@media (min-width: 48rem) {
+  .progression { grid-template-columns: 1.15fr 1.6fr 1fr 1fr; }
+}
+.progression li:nth-child(2) .p-n { font-size: clamp(3rem, 7.5vw, 6rem); }

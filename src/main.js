@@ -375,11 +375,13 @@ function fillTimelines() {
     </article>`;
 
   const cut = HISTORY.findIndex((h) => h.year === '1978');
-  // The 1929 "one heat" entry is staged as its own full-bleed section, so it is
-  // filtered out here rather than repeated as an ordinary timeline row.
-  const isHinge = (h) => h.pull && h.year === '1929';
-  early.innerHTML = HISTORY.slice(0, cut).filter((h) => !isHinge(h)).map(item).join('');
-  ret.innerHTML = HISTORY.slice(cut).map(item).join('');
+  // Entries staged as their own full-bleed band are filtered out of the
+  // timeline rather than repeated: 1929 (the one-heat hinge) and 2000 (the
+  // revival). Without this the same headline and the same four numbers
+  // appeared twice within 300 vertical pixels.
+  const isStaged = (h) => (h.pull && h.year === '1929') || h.year === '2000';
+  early.innerHTML = HISTORY.slice(0, cut).filter((h) => !isStaged(h)).map(item).join('');
+  ret.innerHTML = HISTORY.slice(cut).filter((h) => !isStaged(h)).map(item).join('');
 }
 
 function fillChart() {

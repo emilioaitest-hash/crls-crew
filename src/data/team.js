@@ -52,9 +52,10 @@ export const HISTORY = [
     century.`,
     note: 'The program says 1643. Wikipedia and the school\'s motto page say 1648. Shown as disputed rather than resolved.',
     aside: [
-      ['Founded', '1643 or 1648'],
-      ['Master', 'Elijah Corlett'],
-      ['Claim', '2nd public school in America'],
+      ['Founded', '1643 per the program; 1648 per the town record'],
+      ['First master', 'Elijah Corlett'],
+      ['Claim', 'Second public school in the colonies'],
+      ['Older than', 'The United States, by 133 years'],
     ],
     src: SOURCES.crls,
   },
@@ -66,9 +67,10 @@ export const HISTORY = [
     a mile of each other on either side of the river.`,
     note: 'The 1889 start date comes from the program\'s own history. No independent source was found for that specific year, though the era itself is well documented.',
     aside: [
-      ['River', 'Charles'],
-      ['Rivals', 'Rindge Technical, Browne & Nichols'],
+      ['Course', 'The Charles, downstream'],
+      ['Rivals', 'Rindge Technical, Browne &amp; Nichols'],
       ['Boat class', 'Fours'],
+      ['Era documented in', 'The Harvard Crimson, 1898-1929'],
     ],
     src: SOURCES.crls,
   },
@@ -79,9 +81,11 @@ export const HISTORY = [
     Nichols racing on the Charles on the same rainy afternoon. Rindge Tech loses the
     Harvard Challenge Cup by two feet.`,
     aside: [
-      ['Event', 'Interscholastic regatta'],
-      ['Schools', 'Three, within one mile'],
-      ['Conditions', 'Rain'],
+      ['Distance', 'Half a mile'],
+      ['Second fours', 'B&amp;N won; Cambridge Latin 2nd, Rindge 4th'],
+      ['First fours', 'B&amp;N took the Harvard Challenge Cup by two feet'],
+      ['Weather', 'Rain'],
+      ['Recorded in', 'The Harvard Crimson, 19 May 1922'],
     ],
     src: SOURCES.crimson1922,
   },
@@ -91,8 +95,11 @@ export const HISTORY = [
     body: `Rindge Technical wins the first regatta held by the new Schoolboy Rowing
     Association, then races the private-school crews the following day.`,
     aside: [
-      ['New event', 'Public school regatta'],
-      ['Reason', 'Separate from private schools'],
+      ['Event', 'First Schoolboy Rowing Association regatta'],
+      ['Winner', 'Rindge Technical, eights'],
+      ['Then', 'Raced private school eights for the title'],
+      ['Crimson headline', 'Public school eights race'],
+      ['Recorded in', 'The Harvard Crimson, 2 June 1926'],
     ],
     src: SOURCES.crimson1926,
   },
@@ -128,9 +135,10 @@ export const HISTORY = [
     1977.`,
     note: 'The rowing history page says 1978; Wikipedia, History Cambridge and the Crimson all say 1977.',
     aside: [
-      ['Merged', 'Cambridge High & Latin'],
-      ['With', 'Rindge Technical'],
-      ['Note', 'Most sources say 1977'],
+      ['Merged', 'Cambridge High &amp; Latin with Rindge Technical'],
+      ['Also folded in', 'The Pilot and Fundamental programs'],
+      ['Date disputed', 'Program says 1978; three sources say 1977'],
+      ['Rowing at the time', 'None, for 49 years'],
     ],
     src: SOURCES.crls,
   },
@@ -142,8 +150,9 @@ export const HISTORY = [
     name and another organization's colors. Teachers Linda Lipkin, Phyllis Bretholtz and
     Tobe Korsgren drive the kids to practice.`,
     aside: [
-      ['Gap closed', '60 years'],
+      ['Years since the last race', '60'],
       ['Rowed as', 'A borrowed name'],
+      ['River', 'Unchanged'],
     ],
     src: SOURCES.crls,
   },
@@ -154,8 +163,9 @@ export const HISTORY = [
     the remodeled Cambridge Boat Club. For the first time the program has somewhere to
     keep boats.`,
     aside: [
-      ['Home', 'Cambridge Boat Club'],
-      ['Stretch', 'Powerhouse'],
+      ['Home', 'Cambridge Boat Club, dedicated bay'],
+      ['Stretch', 'The Powerhouse'],
+      ['Shared with', 'Harvard and CBC members'],
     ],
     src: SOURCES.crls,
   },
