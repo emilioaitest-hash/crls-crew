@@ -458,15 +458,27 @@ function initScroll(hero) {
 
   // chart bars animate as a group, staggered
   const chart = document.getElementById('chart');
-  let chartDone = false;
+  let chartStarted = false;
   const maybeChart = () => {
-    if (chartDone || !chart) return;
+    if (!chart) return;
+    const cols = [...chart.children];
+    if (!cols.length) return;
     const r = chart.getBoundingClientRect();
     if (r.top > innerHeight * 0.85) return;
-    chartDone = true;
-    [...chart.children].forEach((c, i) => {
-      setTimeout(() => c.classList.add('in'), reduced ? 0 : i * 38);
-    });
+    if (!chartStarted) {
+      chartStarted = true;
+      cols.forEach((c, i) => {
+        setTimeout(() => c.classList.add('in'), reduced ? 0 : i * 38);
+      });
+      // Backstop: if the staggered timers are starved (throttled tab), make
+      // sure every column still ends up revealed rather than invisible.
+      setTimeout(() => cols.forEach((c) => c.classList.add('in')), 1600);
+      return;
+    }
+    // Keep sweeping until they are all in; costs one class check per tick.
+    if (cols.some((c) => !c.classList.contains('in'))) {
+      cols.forEach((c) => c.classList.add('in'));
+    }
   };
 
   // counters
@@ -535,6 +547,11 @@ function initScroll(hero) {
       label.textContent = current.dataset.chapter;
     }
   }
+
+  // Signal to CSS that JS is driving the reveals. Until this lands, every
+  // [data-reveal] element is plain visible, so a failed bundle or a throttled
+  // tab shows the whole page rather than a blank one.
+  if (!reduced) document.documentElement.classList.add('js-reveal');
 
   // Native scroll is always wired up. Lenis is an enhancement on top; if its
   // rAF loop is throttled (background tab, reduced power mode) the page still
