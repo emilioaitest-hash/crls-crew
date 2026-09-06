@@ -470,7 +470,10 @@ function initScroll(hero) {
     const still = [];
     for (const el of counters) {
       const r = el.getBoundingClientRect();
-      if (r.top > innerHeight * 0.9) { still.push(el); continue; }
+      // Fire as soon as any part of the number is inside the viewport. An
+      // earlier 0.9 * innerHeight trigger line missed the hero stats by 8px on
+      // a 1000px viewport, so the site loaded showing "0 races on record".
+      if (r.top >= innerHeight || r.bottom <= 0) { still.push(el); continue; }
       const target = +el.dataset.count;
       if (reduced) { el.textContent = target.toLocaleString(); continue; }
       const t0 = performance.now(), dur = 1400;
