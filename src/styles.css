@@ -865,6 +865,7 @@ p:last-child { margin-bottom: 0; }
 .silence-rule {
   position: relative;
   width: 1px;
+  box-shadow: 0 0 24px var(--river);
   justify-self: start;
   margin-left: clamp(0px, 6vw, 7rem);
   background: var(--rule);
@@ -896,6 +897,7 @@ p:last-child { margin-bottom: 0; }
      legible as the thing the section is counting. */
   color: #47535f;
   font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 90px var(--river);
   align-self: center;
   justify-self: end;
   transition: color .4s var(--ease);
@@ -952,10 +954,13 @@ p:last-child { margin-bottom: 0; }
 
 /* Left-aligned prose column, as a real class rather than an inline override. */
 .narrow--flush {
-  /* 36rem to match the .split measure fixed in the same round; 44rem set the
-     site's closing argument at 79 characters, the widest text on the page. */
-  width: min(100%, 36rem);
+  /* The closing argument. Narrowing the box alone left it at 77 CPL because
+     the type stayed at 18px; raising the type to 20px in a 32rem box brings it
+     to ~62 characters and gives the site's thesis the weight it deserves. */
+  width: min(100%, 32rem);
   margin-inline: 0;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.55;
 }
 
 
@@ -965,13 +970,16 @@ p:last-child { margin-bottom: 0; }
 .facts {
   display: grid;
   width: 100%;
-  max-width: min(100%, 32rem);
+  /* No cap. The track is already bounded by .wrap and the grid below sizes the
+     label column to content, so the facts occupy the space that was made for
+     them instead of sitting in the left half of it. */
+  max-width: none;
   /* Both columns size to content and sit left. The previous right-aligned
      value column with a border-bottom produced a restaurant-menu leader —
      "Charles" stranded 305px from its own label behind an underline, which
      measured as a full column while carrying almost no ink. */
   grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
-  gap: .35rem 1.5rem;
+  gap: .35rem clamp(1.5rem, 3vw, 3rem);
   margin: 0 0 1rem;
   font-family: var(--mono);
   font-size: var(--t-micro);
@@ -1127,7 +1135,7 @@ html:not(.js-reveal) .school { opacity: 1; transform: none; }
 }
 .boat-state {
   font-family: var(--mono); font-size: var(--t-micro); letter-spacing: .1em;
-  text-transform: uppercase; color: var(--grey-2); text-align: right;
+  text-transform: uppercase; color: var(--grey); text-align: right;
 }
 .boat.is-built .boat-state { color: var(--dawn); }
 
