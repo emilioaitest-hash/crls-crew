@@ -1,0 +1,6 @@
+node_modules/
+dist/
+research/cache/
+research/raw/
+research/neira_pdf/
+.DS_Store

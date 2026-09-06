@@ -1,0 +1,464 @@
+[
+ {
+  "id": 17,
+  "name": "CRI Rumble on the River",
+  "date": "2011-09-18",
+  "subtitle": null
+ },
+ {
+  "id": 10086,
+  "name": "Northeast Youth Championship",
+  "date": "2014-05-17",
+  "subtitle": "Merimack River, Lowell, MA"
+ },
+ {
+  "id": 20111,
+  "name": "CRI Rumble on the River",
+  "date": "2014-09-14",
+  "subtitle": "Charles River, Cambridge, MA"
+ },
+ {
+  "id": 20143,
+  "name": "Northeast Youth Championships",
+  "date": "2015-05-16",
+  "subtitle": "Merrimac River, Lowell, MA"
+ },
+ {
+  "id": 20189,
+  "name": "MPSRA Spring Championship",
+  "date": "2015-05-24",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20161,
+  "name": "CRI Fall Classic",
+  "date": "2015-09-19",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 20196,
+  "name": "New England Jr/HS Championship",
+  "date": "2015-10-11",
+  "subtitle": "Lake Quinsigamond, Worcester, MA"
+ },
+ {
+  "id": 20208,
+  "name": "MPSRA Fall Championship",
+  "date": "2015-10-25",
+  "subtitle": "Lake Watuppa, Fall River, MA"
+ },
+ {
+  "id": 20213,
+  "name": "South Shore Invitational Novice Challenge",
+  "date": "2015-10-31",
+  "subtitle": "Neponset River, Milton, MA"
+ },
+ {
+  "id": 20226,
+  "name": "Lowell Invitational",
+  "date": "2016-05-14",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20229,
+  "name": "Northeast Youth Championship",
+  "date": "2016-05-21",
+  "subtitle": null
+ },
+ {
+  "id": 20232,
+  "name": "MPSRA Spring Championship",
+  "date": "2016-05-29",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20240,
+  "name": "Cromwell Cup",
+  "date": "2016-07-10",
+  "subtitle": "Charles River, Cambridge, MA"
+ },
+ {
+  "id": 20302,
+  "name": "CRI Fall Classic",
+  "date": "2016-09-17",
+  "subtitle": "Charles River, Boston, MA"
+ },
+ {
+  "id": 20315,
+  "name": "New England Jr/HS Championship",
+  "date": "2016-10-09",
+  "subtitle": "Lake Quinsigamond, Worcester, MA"
+ },
+ {
+  "id": 20306,
+  "name": "Head of the Kevin III",
+  "date": "2016-10-15",
+  "subtitle": "Charles River, Cambridge, MA"
+ },
+ {
+  "id": 20272,
+  "name": "Head of the Charles",
+  "date": "2016-10-22",
+  "subtitle": "Charles River, Cambridge, MA"
+ },
+ {
+  "id": 20311,
+  "name": "MPSRA Fall Championship",
+  "date": "2016-10-30",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20330,
+  "name": "C.R.A.S.H.-B. Sprints",
+  "date": "2017-02-12",
+  "subtitle": "Agganis Arena, Boston, MA"
+ },
+ {
+  "id": 20373,
+  "name": "Northeast Youths",
+  "date": "2017-05-20",
+  "subtitle": "Lake Quinsigamond, Worcester, MA"
+ },
+ {
+  "id": 20384,
+  "name": "MPSRA Spring Championship",
+  "date": "2017-05-28",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20374,
+  "name": "Youth Nationals",
+  "date": "2017-06-09",
+  "subtitle": "Nathan Benderson Park, Sarasota, FL"
+ },
+ {
+  "id": 20433,
+  "name": "CRI Fall Classic",
+  "date": "2017-09-16",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 20437,
+  "name": "Textile River Regatta",
+  "date": "2017-10-01",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20318,
+  "name": "HOCR Test",
+  "date": "2017-10-15",
+  "subtitle": null
+ },
+ {
+  "id": 20435,
+  "name": "Head of the Quinobequin",
+  "date": "2017-10-15",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 20398,
+  "name": "Head Of The Charles",
+  "date": "2017-10-21",
+  "subtitle": "Charles River, Cambridge, MA"
+ },
+ {
+  "id": 20425,
+  "name": "MPSRA Fall Championship",
+  "date": "2017-10-29",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20502,
+  "name": "Northeast Youth Championship",
+  "date": "2018-05-19",
+  "subtitle": "Lake Quinsigamond, Worcester, MA"
+ },
+ {
+  "id": 20503,
+  "name": "MPSRA Spring Championship",
+  "date": "2018-05-27",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20504,
+  "name": "Youth National Championship",
+  "date": "2018-06-08",
+  "subtitle": "Lake Natoma, Rancho Cordova, CA"
+ },
+ {
+  "id": 20556,
+  "name": "CRI Fall Classic",
+  "date": "2018-09-15",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 20547,
+  "name": "Textile River Regatta",
+  "date": "2018-09-30",
+  "subtitle": "Textile River, Lowell, MA"
+ },
+ {
+  "id": 20526,
+  "name": "New England Jr/HS Championship",
+  "date": "2018-10-07",
+  "subtitle": "Lake Quinsigamond, Worcester, MA"
+ },
+ {
+  "id": 20555,
+  "name": "Head of the Quinobequin",
+  "date": "2018-10-14",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 20514,
+  "name": "Head Of The Charles",
+  "date": "2018-10-20",
+  "subtitle": "Charles River, Cambridge, MA"
+ },
+ {
+  "id": 20561,
+  "name": "MPSRA Fall Championship",
+  "date": "2018-10-28",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20634,
+  "name": "Unknown Race",
+  "date": "2019-03-19",
+  "subtitle": ""
+ },
+ {
+  "id": 20595,
+  "name": "Northeast Youth Championship",
+  "date": "2019-05-18",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20678,
+  "name": "MPSRA Spring Championship",
+  "date": "2019-05-26",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20717,
+  "name": "CRI Fall Classic",
+  "date": "2019-09-21",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 20687,
+  "name": "Textile River Regatta",
+  "date": "2019-10-06",
+  "subtitle": "Textile River, Lowell, MA"
+ },
+ {
+  "id": 20703,
+  "name": "Head of the Quinobequin",
+  "date": "2019-10-13",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 20704,
+  "name": "New England Jr/HS Championship",
+  "date": "2019-10-13",
+  "subtitle": "Lake Quinsigamond, Worcester, MA"
+ },
+ {
+  "id": 20689,
+  "name": "MPSRA Fall Championship",
+  "date": "2019-10-27",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20918,
+  "name": "CRI Fall Classic",
+  "date": "2021-09-18",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 20934,
+  "name": "Textile River Regatta",
+  "date": "2021-10-03",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 20938,
+  "name": "New England Jr/HS Championship",
+  "date": "2021-10-09",
+  "subtitle": "Lake Quinsigamond, Worcester, MA"
+ },
+ {
+  "id": 20931,
+  "name": "Head of the Kevin 3",
+  "date": "2021-10-16",
+  "subtitle": "Charles River, Cambridge, MA"
+ },
+ {
+  "id": 20947,
+  "name": "Head of the Quinobequin",
+  "date": "2021-10-17",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 20942,
+  "name": "MPSRA Fall Championship",
+  "date": "2021-10-31",
+  "subtitle": "Lake Watuppa, Fall River, MA"
+ },
+ {
+  "id": 21017,
+  "name": "Northeast Youth Championship",
+  "date": "2022-05-21",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 21031,
+  "name": "MPSRA Spring Championship",
+  "date": "2022-05-29",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 21018,
+  "name": "Youth National Championship",
+  "date": "2022-06-09",
+  "subtitle": "Nathan Benderson Park, Sarasota, FL"
+ },
+ {
+  "id": 21042,
+  "name": "CRI Fall Classic",
+  "date": "2022-09-17",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 21053,
+  "name": "Garbage",
+  "date": "2022-10-02",
+  "subtitle": ""
+ },
+ {
+  "id": 21069,
+  "name": "Textile River Regatta",
+  "date": "2022-10-02",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 21057,
+  "name": "New England Jr/HS/Masters Championship",
+  "date": "2022-10-08",
+  "subtitle": "Lake Quinsigamond"
+ },
+ {
+  "id": 21048,
+  "name": "Head of the Kevin 3",
+  "date": "2022-10-15",
+  "subtitle": "Charles River, Cambridge, MA"
+ },
+ {
+  "id": 21055,
+  "name": "MPSRA Fall Championship",
+  "date": "2022-10-30",
+  "subtitle": ""
+ },
+ {
+  "id": 21133,
+  "name": "Northeast Youth Championship",
+  "date": "2023-05-20",
+  "subtitle": "Lake Quinsigamond, Worcester, MA"
+ },
+ {
+  "id": 21141,
+  "name": "MPSRA Spring Championship",
+  "date": "2023-05-28",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 21165,
+  "name": "Textile River Regatta",
+  "date": "2023-10-01",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 21161,
+  "name": "New England Jr/HS/Masters Championship",
+  "date": "2023-10-08",
+  "subtitle": "Lake Quinsigamond"
+ },
+ {
+  "id": 21187,
+  "name": "MPSRA Fall Championship",
+  "date": "2023-10-29",
+  "subtitle": ""
+ },
+ {
+  "id": 21232,
+  "name": "MPSRA Spring Championship",
+  "date": "2024-05-26",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 21276,
+  "name": "CRI Fall Classic",
+  "date": "2024-09-21",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 21275,
+  "name": "Textile River Regatta",
+  "date": "2024-10-06",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 21265,
+  "name": "Head of the Quinobequin",
+  "date": "2024-10-13",
+  "subtitle": "Charles River, Brighton, MA"
+ },
+ {
+  "id": 21280,
+  "name": "MPSRA Fall Championship",
+  "date": "2024-10-27",
+  "subtitle": ""
+ },
+ {
+  "id": 21340,
+  "name": "Amber Zapatka Memorial Regatta",
+  "date": "2025-05-10",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 21341,
+  "name": "MPSRA Spring Championship",
+  "date": "2025-05-25",
+  "subtitle": "Watuppa Rowing Center Fall River, MA"
+ },
+ {
+  "id": 21375,
+  "name": "Textile River Regatta",
+  "date": "2025-10-05",
+  "subtitle": "Merrimack River, Lowell, MA"
+ },
+ {
+  "id": 21365,
+  "name": "Head of the Kevin 3",
+  "date": "2025-10-11",
+  "subtitle": "Charles River, Cambridge, MA"
+ },
+ {
+  "id": 21376,
+  "name": "Northeast Fall Championship Regatta",
+  "date": "2025-10-12",
+  "subtitle": "Lake Quinsigamond"
+ },
+ {
+  "id": 21378,
+  "name": "MPSRA Fall Championship",
+  "date": "2025-10-26",
+  "subtitle": "Lowell, MA"
+ },
+ {
+  "id": 21436,
+  "name": "MPSRA Spring Championship",
+  "date": "2026-05-24",
+  "subtitle": "Merrimack River, Lowell, MA"
+ }
+]

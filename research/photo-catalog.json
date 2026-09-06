@@ -1,0 +1,1220 @@
+[
+  {
+    "id": "DZc7FyzS00e",
+    "file": "DZc7FyzS00e.jpg",
+    "w": 3396,
+    "h": 1778,
+    "category": "TRAVEL",
+    "description": "Six girls (five standing, one in a wheelchair) posed at the Nathan Benderson Park gold-mosaic monument sign with the USRowing Youth National Championships 2026 Sarasota logo. Palm trees and bright blue sky behind.",
+    "squad": "girls",
+    "usable_as": [
+      "GALLERY_TILE",
+      "PORTRAIT_INSET"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Harsh Florida midday sun, sharp, high-res (3396px). Text is in-scene signage, not an overlay. Faces identifiable.",
+    "dominant_colors": [
+      "#C9A227",
+      "#1B2A5E",
+      "#7FB4DC",
+      "#F0F0EE",
+      "#8A8A88"
+    ],
+    "has_burned_in_text": false,
+    "boat_visible": {
+      "visible": false
+    },
+    "water_visible": false,
+    "rating": 6,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DY-7vl_HNW6",
+    "file": "DY-7vl_HNW6.jpg",
+    "w": 1200,
+    "h": 800,
+    "category": "PODIUM_MEDAL",
+    "description": "Boys 4+ still seated in their black hull at the dock, four rowers grinning and holding up bronze NEIRA medals on blue ribbons; coach and an adult kneeling behind on yellow dock matting. Professional row2k frame.",
+    "squad": "boys",
+    "usable_as": [
+      "HERO_FULLBLEED",
+      "SECTION_BACKGROUND",
+      "GALLERY_TILE"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Professional sports photography, sharp, soft overcast light, excellent candid emotion. Small row2k.com watermark bottom-right (croppable). Faces identifiable. Only 1200px wide - limits full-bleed use.",
+    "dominant_colors": [
+      "#1A1A1C",
+      "#C8B96A",
+      "#6E7A7C",
+      "#4A5A3C",
+      "#E8E8E6"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "black"
+    },
+    "water_visible": true,
+    "rating": 8.5,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DYuDYwgnI_0",
+    "file": "DYuDYwgnI_0.jpg",
+    "w": 3024,
+    "h": 4032,
+    "category": "PODIUM_MEDAL",
+    "description": "Five girls shoulder-to-shoulder on a gravel path at a regatta site, each wearing a NEIRA silver medal on a blue lanyard, in black CRLS unisuits. Blurred regatta tents and tall green trees behind.",
+    "squad": "girls",
+    "usable_as": [
+      "GALLERY_TILE",
+      "PORTRAIT_INSET"
+    ],
+    "crop_orientation": "portrait",
+    "quality_notes": "Highest resolution in the set (3024x4032). Soft overcast light, slightly soft focus, phone capture. Faces identifiable and smiling. Tall portrait crop.",
+    "dominant_colors": [
+      "#5B7048",
+      "#1C1C1E",
+      "#E6E4DF",
+      "#9A968E",
+      "#A8C5B4"
+    ],
+    "has_burned_in_text": false,
+    "boat_visible": {
+      "visible": false
+    },
+    "water_visible": false,
+    "rating": 7,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DYt11QDS8mm",
+    "file": "DYt11QDS8mm.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "MPSRA state championship announcement. Aerial base photo of a grey-white 4+ cutting a diagonal wake across navy water, buried under CRLS falcon logo, huge 'MPSRA' wordmark, date and venue text.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Base aerial is excellent but the text lockup covers the centre of the frame. Same base image reused in DYqEvb6yohK.",
+    "dominant_colors": [
+      "#1B3A5F",
+      "#FFFFFF",
+      "#2E5C8A",
+      "#0F2440"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "grey/white"
+    },
+    "water_visible": true,
+    "rating": 3,
+    "rating_if_clean_original": 9
+  },
+  {
+    "id": "DYqEvb6yohK",
+    "file": "DYqEvb6yohK.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "NEIRA championship announcement using the same aerial 4+ base as DYt11QDS8mm, overlaid with falcon logo, large blue 'NEIRA' wordmark, yellow subtitle and venue text.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Text dominates. Duplicate base photograph.",
+    "dominant_colors": [
+      "#1B3A5F",
+      "#3D8BFF",
+      "#F2D024",
+      "#FFFFFF"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "grey"
+    },
+    "water_visible": true,
+    "rating": 2,
+    "rating_if_clean_original": 9
+  },
+  {
+    "id": "DYccfKfy-U7",
+    "file": "DYccfKfy-U7.jpg",
+    "w": 1118,
+    "h": 840,
+    "category": "PODIUM_MEDAL",
+    "description": "Twelve people arm-in-arm on grass before a white USRowing step-and-repeat banner: ten athletes in black CRLS unisuits wearing bronze medals, flanked by two coaches in grey CRLS CREW tees.",
+    "squad": "mixed",
+    "usable_as": [
+      "GALLERY_TILE",
+      "SECTION_BACKGROUND"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Bright midday sun, sharp, faces clearly identifiable. Burned-in caption '3rd and 3rd: On to Nationals!' along the bottom grass strip - croppable. Branded sponsor backdrop reads corporate.",
+    "dominant_colors": [
+      "#FFFFFF",
+      "#1A1A1E",
+      "#C8102E",
+      "#1F3A6E",
+      "#6B7A4A"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": false
+    },
+    "water_visible": false,
+    "rating": 6.5,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DYX6xW-nIMC",
+    "file": "DYX6xW-nIMC.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "USRowing Northeast Youth Championships announcement. Aerial base of a white 4+ on deep blue water, overlaid with falcon logo, CRLS CREW wordmark, event logo and 'Lake Mercer, NJ' date block.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Heavy designed lockup across the whole frame.",
+    "dominant_colors": [
+      "#12315C",
+      "#FFFFFF",
+      "#C8102E",
+      "#0E1A2B"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "white"
+    },
+    "water_visible": true,
+    "rating": 2,
+    "rating_if_clean_original": 8
+  },
+  {
+    "id": "DYTRVUeySLb",
+    "file": "DYTRVUeySLb.jpg",
+    "w": 1536,
+    "h": 1536,
+    "category": "TEAM_PORTRAIT",
+    "description": "About twelve senior girls in a line on a wooden dock, each wearing the sweatshirt of the college she committed to (Wisconsin, Colby, Bates, Cornell, Middlebury, MIT, Macalester, Washington, Durham). River and green tree line behind.",
+    "squad": "girls",
+    "usable_as": [
+      "SECTION_BACKGROUND",
+      "GALLERY_TILE",
+      "HERO_FULLBLEED"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Bright natural daylight, decent sharpness, 1536px square. Faces identifiable, celebratory. Strong 'where they go next' narrative. Wide group needs a generous crop.",
+    "dominant_colors": [
+      "#6E9BC4",
+      "#3E5B34",
+      "#8A6E4E",
+      "#A02030",
+      "#E9E6DF"
+    ],
+    "has_burned_in_text": false,
+    "boat_visible": {
+      "visible": false
+    },
+    "water_visible": true,
+    "rating": 7.5,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DYKFWgAnG2l",
+    "file": "DYKFWgAnG2l.jpg",
+    "w": 1170,
+    "h": 1319,
+    "category": "GRAPHIC_POSTER",
+    "description": "Screenshot of a race-results table: yellow RESULTS header band over rows of event names, crew names and finish times. No photographic content at all.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "portrait",
+    "quality_notes": "Pure text/data screenshot. Zero editorial value as imagery.",
+    "dominant_colors": [
+      "#F2C300",
+      "#FFFFFF",
+      "#1A1A1A",
+      "#D8D8D8"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": false
+    },
+    "water_visible": false,
+    "rating": 1,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DYH9N14Emdf",
+    "file": "DYH9N14Emdf.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "Matchup poster: CRLS vs Hopkins, 5/9 at home. Aerial base of a white 4+ on steel-blue Charles water under falcon logo, wordmarks and opponent crests.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Member of the reused 'matchup aerial' template family.",
+    "dominant_colors": [
+      "#1E3E63",
+      "#FFFFFF",
+      "#8B1A2B",
+      "#14293F"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "white"
+    },
+    "water_visible": true,
+    "rating": 2,
+    "rating_if_clean_original": 8
+  },
+  {
+    "id": "DYAQoNWEot4",
+    "file": "DYAQoNWEot4.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "Matchup poster: CRLS vs Winsor and Nobles, 'GIRLS ONLY 5/6 HOME', over the same white 4+ aerial base.",
+    "squad": "girls",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Matchup aerial template. Text across centre.",
+    "dominant_colors": [
+      "#1E3E63",
+      "#FFFFFF",
+      "#9C2233",
+      "#3C5773"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "white"
+    },
+    "water_visible": true,
+    "rating": 2,
+    "rating_if_clean_original": 8
+  },
+  {
+    "id": "DXhXR4yEos1",
+    "file": "DXhXR4yEos1.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "Matchup poster: CRLS vs NMH, Brooks and Middlesex, 4/25 at Brooks, over the white 4+ aerial base.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Matchup aerial template, three opponent crests stacked over the boat.",
+    "dominant_colors": [
+      "#1E3E63",
+      "#FFFFFF",
+      "#7B1F2B",
+      "#1F5B3A"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "white"
+    },
+    "water_visible": true,
+    "rating": 2,
+    "rating_if_clean_original": 8
+  },
+  {
+    "id": "DXcHIPgkgwz",
+    "file": "DXcHIPgkgwz.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "2026 Mayor's Cup poster: CRLS vs BB&N, Belmont Hill and Middlesex with a full race schedule block, over the overhead white-hull aerial on wind-chopped blue water.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "The most text-heavy of the matchup family - full schedule listing over the frame.",
+    "dominant_colors": [
+      "#1F4468",
+      "#FFFFFF",
+      "#C9A24A",
+      "#7B1F2B",
+      "#14304C"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+/8+",
+      "hull_color": "white/pearl"
+    },
+    "water_visible": true,
+    "rating": 2,
+    "rating_if_clean_original": 8
+  },
+  {
+    "id": "DX63USQkm67",
+    "file": "DX63USQkm67.jpg",
+    "w": 1440,
+    "h": 1800,
+    "category": "GRAPHIC_POSTER",
+    "description": "Screenshot of a results webpage - conditions note plus Men's and Women's racing tables of CRLS vs Groton boat-by-boat times on white.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "portrait",
+    "quality_notes": "Pure text screenshot, no photographic content.",
+    "dominant_colors": [
+      "#F2C300",
+      "#FFFFFF",
+      "#EAE7D0",
+      "#1A1A1A"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": false
+    },
+    "water_visible": false,
+    "rating": 1,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DX1qZD2EtB3",
+    "file": "DX1qZD2EtB3.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "Matchup poster: CRLS vs Groton, 5/2 at Groton. Least cluttered member of the aerial template family - the white 4+ is clearly readable at left.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Cleanest of the poster family but still a designed graphic.",
+    "dominant_colors": [
+      "#1F4468",
+      "#FFFFFF",
+      "#8B2231",
+      "#16334F"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "white"
+    },
+    "water_visible": true,
+    "rating": 2.5,
+    "rating_if_clean_original": 8
+  },
+  {
+    "id": "DWt1oCdjjKJ",
+    "file": "DWt1oCdjjKJ.jpg",
+    "w": 1440,
+    "h": 1080,
+    "category": "TEAM_PORTRAIT",
+    "description": "Nine male rowers arm-in-arm on a wide wooden dock in white MIT unisuits with red block T. Behind them the Charles, dramatic storm clouds, the Boston skyline and a crew sitting in a shell; oars laid across the dock in the foreground.",
+    "squad": "boys",
+    "usable_as": [
+      "HERO_FULLBLEED",
+      "SECTION_BACKGROUND",
+      "GALLERY_TILE"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Sharp, moody overcast light, excellent composition with oars as a leading line. Faces identifiable. CAVEAT: this is MIT kit (an alumni post), NOT CRLS - do not present as a CRLS team photo.",
+    "dominant_colors": [
+      "#8E9AA6",
+      "#FFFFFF",
+      "#C0303A",
+      "#6E7C88",
+      "#9B8C7A"
+    ],
+    "has_burned_in_text": false,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "white"
+    },
+    "water_visible": true,
+    "rating": 8,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DW95LWUGaL2",
+    "file": "DW95LWUGaL2.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "2026 Mayor's Cup season-opener poster vs BB&N, over the aerial base of a white 4+ with cox throwing white puddles across deep steel-blue chop.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Matchup aerial template with gold Mayor's Cup lettering.",
+    "dominant_colors": [
+      "#1D4570",
+      "#FFFFFF",
+      "#C9A24A",
+      "#16304E",
+      "#2C5B8C"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "white"
+    },
+    "water_visible": true,
+    "rating": 2,
+    "rating_if_clean_original": 8
+  },
+  {
+    "id": "DVY_KwGDs1U",
+    "file": "DVY_KwGDs1U.jpg",
+    "w": 1440,
+    "h": 1440,
+    "category": "GRAPHIC_POSTER",
+    "description": "'2026 Spring Crew is back' schedule announcement over a stern-on aerial of a girls 4+ with bow number 443, oars fanned symmetrically, cox looking straight at camera on deep blue water.",
+    "squad": "girls",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Glowing falcon logo sits directly over the crew. The underlying symmetrical stern-on four is one of the better compositions in the archive.",
+    "dominant_colors": [
+      "#2A5688",
+      "#4A8FE0",
+      "#FFFFFF",
+      "#D8342A",
+      "#1B3A5E"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "light/white"
+    },
+    "water_visible": true,
+    "rating": 3,
+    "rating_if_clean_original": 8.5
+  },
+  {
+    "id": "DQHhhcMjhbW",
+    "file": "DQHhhcMjhbW.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "MPSRA Fall Championship announcement. Base is an overhead shot of rowers' laps and a grey blade inside a shell, mostly obscured by a sun-flare graphic, falcon logo and a large blue text band.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Base photo is weak and largely hidden; text dominates.",
+    "dominant_colors": [
+      "#2C5FA8",
+      "#1B3D6E",
+      "#FFFFFF",
+      "#D8342A",
+      "#7F97B4"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "unknown (interior/riggers)",
+      "hull_color": "grey"
+    },
+    "water_visible": true,
+    "rating": 2,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DQCJXGnjtjG",
+    "file": "DQCJXGnjtjG.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "Flat navy congratulations graphic for the Girls 1V 10th place at Head of the Charles, with falcon logo, light-blue text band, red arrow and the official HOCR logo. No photograph whatsoever.",
+    "squad": "girls",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Pure vector/typographic graphic on flat colour.",
+    "dominant_colors": [
+      "#16294D",
+      "#5C9BF5",
+      "#FFFFFF",
+      "#E02B20"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": false
+    },
+    "water_visible": false,
+    "rating": 1,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DPn_jRkDi_t",
+    "file": "DPn_jRkDi_t.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "Northeast Fall Championship announcement over a tight side view of two boys rowing shot from a following launch - dark CRLS unisuits with the white falcon on the back, mid-drive, oar shafts with turquoise collars, rain-dimpled grey-green water.",
+    "squad": "boys",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "The base is one of the best genuine action frames in the archive; roughly the top 45% is clean. Blue band and red event text cover the lower half.",
+    "dominant_colors": [
+      "#6E7A80",
+      "#1E2A33",
+      "#2C5FA8",
+      "#D8342A",
+      "#FFFFFF"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "white"
+    },
+    "water_visible": true,
+    "rating": 3,
+    "rating_if_clean_original": 8.5
+  },
+  {
+    "id": "DPUAhTNjoEb",
+    "file": "DPUAhTNjoEb.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "Textile River Regatta announcement over an overhead frame of a girls 4+ with bow number 455 - three rowers at the catch, riggers and oar shafts fanning over near-black deep water.",
+    "squad": "girls",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Top ~45% of the frame is clean photograph; blue band and red text cover the rest.",
+    "dominant_colors": [
+      "#0F2740",
+      "#2E63B0",
+      "#FFFFFF",
+      "#E02B20",
+      "#8C99A4"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "white/grey"
+    },
+    "water_visible": true,
+    "rating": 3,
+    "rating_if_clean_original": 8
+  },
+  {
+    "id": "DPGma4gjvPg",
+    "file": "DPGma4gjvPg.jpg",
+    "w": 1080,
+    "h": 1346,
+    "category": "GRAPHIC_POSTER",
+    "description": "Novice scrimmage announcement over a golden-hour photograph: burning orange sky fading to violet, silhouetted tree line and a low stone arch bridge, an 8+ gliding across still copper water, shot from the bow of a coaching launch with cleats and rope in the foreground.",
+    "squad": "unknown",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "portrait",
+    "quality_notes": "Exceptional base photograph with real foreground depth, ruined by heavy centred text (huge 'NOVICE SCRIMMAGE' plus two opponent logos and a footer band).",
+    "dominant_colors": [
+      "#E07B2A",
+      "#7A4A2E",
+      "#2E3238",
+      "#4A5058",
+      "#3D8BFF"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 4,
+    "rating_if_clean_original": 9.5
+  },
+  {
+    "id": "DOjXd1Wj9BF",
+    "file": "DOjXd1Wj9BF.jpg",
+    "w": 1440,
+    "h": 1920,
+    "category": "BOATHOUSE",
+    "description": "Cambridge Boat Club president John Lambert mid-speech, arms open, holding papers, addressing Fall Orientation inside the boathouse: white beadboard walls hung with framed watercolours, warm wooden floor, a Concept2 BikeErg in the foreground.",
+    "squad": "unknown",
+    "usable_as": [
+      "PORTRAIT_INSET",
+      "GALLERY_TILE"
+    ],
+    "crop_orientation": "portrait",
+    "quality_notes": "Casual phone snapshot, flat indoor light, no styling. The only true boathouse-interior frame in the set but it is a photo of one adult speaking, not an architectural shot. Face identifiable.",
+    "dominant_colors": [
+      "#EFEDE8",
+      "#C79A5B",
+      "#E8621A",
+      "#2B2B2E",
+      "#9FB0A4"
+    ],
+    "has_burned_in_text": false,
+    "boat_visible": {
+      "visible": false
+    },
+    "water_visible": false,
+    "rating": 4,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DOXG__QDz1p",
+    "file": "DOXG__QDz1p.jpg",
+    "w": 1440,
+    "h": 1440,
+    "category": "BOATHOUSE",
+    "description": "Fourteen novice girls plus a coach in a long line on gravel, all holding a single long black oar horizontally across the frame. Behind them the Cambridge Boat Club: white clapboard, red geranium window boxes, an open bay glowing warm with racked shells inside, upper deck with people.",
+    "squad": "girls",
+    "usable_as": [
+      "HERO_FULLBLEED",
+      "SECTION_BACKGROUND",
+      "GALLERY_TILE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Evening light with warm interior glow against cool blue sky - genuinely atmospheric. Faces identifiable, all smiling. Slight low-light softness and noise. No burned-in text. The definitive 'our boathouse plus our team' image.",
+    "dominant_colors": [
+      "#E8E6E1",
+      "#C89A3C",
+      "#7E8A96",
+      "#4A4E44",
+      "#2A2E33"
+    ],
+    "has_burned_in_text": false,
+    "boat_visible": {
+      "visible": true,
+      "type": "racked shells in bay",
+      "hull_color": "mixed"
+    },
+    "water_visible": false,
+    "rating": 8.5,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DNd6rJ5RoaY",
+    "file": "DNd6rJ5RoaY.jpg",
+    "w": 940,
+    "h": 788,
+    "category": "GRAPHIC_POSTER",
+    "description": "'Back on the water' preseason announcement over a darkened boathouse interior: looking out an open bay door to grey water, a hull nose overhead, boat racks and riggers, and the painted wall legend 'ROW LIKE A CHAMPION TODAY'.",
+    "squad": "unknown",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Base darkened roughly 40% and covered by large stencil type. The painted wall slogan is a great authentic detail worth recovering.",
+    "dominant_colors": [
+      "#6E6A5E",
+      "#3D8BFF",
+      "#FFFFFF",
+      "#2A2622",
+      "#B8B0A0"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "stored hulls",
+      "hull_color": "mixed"
+    },
+    "water_visible": true,
+    "rating": 2.5,
+    "rating_if_clean_original": 7
+  },
+  {
+    "id": "DNT7y9hRRmd",
+    "file": "DNT7y9hRRmd.jpg",
+    "w": 940,
+    "h": 788,
+    "category": "GRAPHIC_POSTER",
+    "description": "Registration deadline poster with a red 'EXTENDED' grunge stamp, over the blue-hour base of an 8+ in silhouette on deep indigo water with a dark tree line and a gabled boathouse at right.",
+    "squad": "unknown",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Member of the 'Register for Fall Crew' countdown family - one shared base photo, heavy blue tint, five overlay variants.",
+    "dominant_colors": [
+      "#1E3454",
+      "#2C4A72",
+      "#E02B20",
+      "#F2D024",
+      "#0E1A2E"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 3,
+    "rating_if_clean_original": 8.5
+  },
+  {
+    "id": "DNRVE8TRWf6",
+    "file": "DNRVE8TRWf6.jpg",
+    "w": 940,
+    "h": 788,
+    "category": "GRAPHIC_POSTER",
+    "description": "Registration countdown poster, '1 DAY TO GO' badge, over the shared dusk 8+ bow-on base photo.",
+    "squad": "unknown",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Countdown family. Low resolution (940px). Text and badge over the sky.",
+    "dominant_colors": [
+      "#1E3A63",
+      "#2E5A8C",
+      "#F2C300",
+      "#FFFFFF",
+      "#0E1C33"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 2.5,
+    "rating_if_clean_original": 8.5
+  },
+  {
+    "id": "DNOjqPgRdq4",
+    "file": "DNOjqPgRdq4.jpg",
+    "w": 940,
+    "h": 788,
+    "category": "GRAPHIC_POSTER",
+    "description": "Registration countdown poster, large '2 DAYS TO GO' ribbon badge, over the shared dusk 8+ base.",
+    "squad": "unknown",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Countdown family; the largest badge of the set, obscuring the most sky.",
+    "dominant_colors": [
+      "#1E3A63",
+      "#2E5A8C",
+      "#F2C300",
+      "#FFFFFF",
+      "#0E1C33"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 2,
+    "rating_if_clean_original": 8.5
+  },
+  {
+    "id": "DMdlrN0xfML",
+    "file": "DMdlrN0xfML.jpg",
+    "w": 940,
+    "h": 788,
+    "category": "GRAPHIC_POSTER",
+    "description": "Registration poster with NO countdown badge - only falcon logo, script 2025, the text band and deadline line - over the shared dusk 8+ bow-on base. Boat, water, sunset and the right-hand boathouse all read clearly.",
+    "squad": "unknown",
+    "usable_as": [
+      "NOT_USABLE",
+      "TEXTURE_DETAIL"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Cleanest member of the countdown family. The upper-right quadrant (boathouse and dusk sky) and the lower water band are croppable as texture.",
+    "dominant_colors": [
+      "#1E3A63",
+      "#2E5A8C",
+      "#F2C300",
+      "#FFFFFF",
+      "#16294A"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 3.5,
+    "rating_if_clean_original": 8.5
+  },
+  {
+    "id": "DM_Ib8Zx6JH",
+    "file": "DM_Ib8Zx6JH.jpg",
+    "w": 940,
+    "h": 788,
+    "category": "GRAPHIC_POSTER",
+    "description": "Registration countdown poster, huge '7 DAYS TO GO' ribbon, over the shared dusk 8+ bow-on base with oars fanned wide over glassy indigo water.",
+    "squad": "unknown",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "landscape",
+    "quality_notes": "Countdown family. Heavy blue tint, low resolution.",
+    "dominant_colors": [
+      "#1E3A63",
+      "#2E5A8C",
+      "#F2C300",
+      "#FFFFFF",
+      "#16294A"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 2.5,
+    "rating_if_clean_original": 8.5
+  },
+  {
+    "id": "DKEm18gO_6f",
+    "file": "DKEm18gO_6f.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "MPSRA state championship poster over an unusual top-down shot straight along a shell's spine - pearl-grey hull and washbox running up the frame, a rigger, a rower's legs and feet in the shoes and a cox in a white cap, over deep blue water.",
+    "squad": "mixed",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Distinctive perspective that would make a good texture detail, but an enormous 'MPSRA' wordmark covers the centre band.",
+    "dominant_colors": [
+      "#23517F",
+      "#16375C",
+      "#FFFFFF",
+      "#A8B4BE",
+      "#C8D24A"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+/8+",
+      "hull_color": "pearl grey"
+    },
+    "water_visible": true,
+    "rating": 2.5,
+    "rating_if_clean_original": 7.5
+  },
+  {
+    "id": "DJwZzWotwjN",
+    "file": "DJwZzWotwjN.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "Novice Entropy Cup matchup poster over a warm peach-and-gold sunset: an 8+ coming bow-on toward the camera, rowers in silhouette, oars fanned symmetrically and squared just off glassy pink-grey water, black tree line, low arched bridge and a boathouse at the right edge.",
+    "squad": "girls",
+    "usable_as": [
+      "TEXTURE_DETAIL"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Overlay sits in the upper half only - the bottom ~35% is clean, unobstructed, genuinely lovely photography and crops out as a usable water band today.",
+    "dominant_colors": [
+      "#E8A05A",
+      "#C8763C",
+      "#6E7C88",
+      "#2A2E33",
+      "#7A5A7E"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 4,
+    "rating_if_clean_original": 8.5
+  },
+  {
+    "id": "DJKG27lxule",
+    "file": "DJKG27lxule.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "CRLS vs Groton poster over a boys 8+ in a black Vespoli hull running across the lower third, eight rowers mid-drive, with the Charles, a low road bridge and the Boston skyline including the Prudential Tower under heavy overcast.",
+    "squad": "boys",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Strong 'this is Cambridge' base frame; Groton crest and wordmarks cover the upper and centre areas.",
+    "dominant_colors": [
+      "#6E7E92",
+      "#8A98A8",
+      "#2A3038",
+      "#B8C2CC",
+      "#7A2231"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "black (Vespoli)"
+    },
+    "water_visible": true,
+    "rating": 3.5,
+    "rating_if_clean_original": 8.5
+  },
+  {
+    "id": "DJFTbZhx_tU",
+    "file": "DJFTbZhx_tU.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "Girls-only Winsor and Nobles matchup poster over a spectacular sunset: brilliant orange sky streaked with cirrus, a girls 4+ bow-on with oars fanned wide and squared above glassy copper water, a glowing bow light, and a large dark-gabled Victorian boathouse with its dock at the right edge.",
+    "squad": "girls",
+    "usable_as": [
+      "TEXTURE_DETAIL"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "The single most beautiful base photograph in the archive. Text occupies a centre column; the outer thirds, the sky band and the lower water are clean and croppable. Also the best boathouse-at-dusk exterior in the set.",
+    "dominant_colors": [
+      "#E8933F",
+      "#F2C089",
+      "#5A6570",
+      "#262A2F",
+      "#8A5A3C"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 5,
+    "rating_if_clean_original": 9.5
+  },
+  {
+    "id": "DIy1IVIs1vf",
+    "file": "DIy1IVIs1vf.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "2025 Mayor's Cup boys poster over a warm dusk frame: a close side-on view of three rowers in white and blue tees mid-stroke in a pale hull, water lit with gold and blue sunset reflections, Storrow Drive with cars and streetlights behind.",
+    "squad": "boys",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Beautiful light but the most text-cluttered of the sunset family - centre and bottom are both covered by crests and schedule lines.",
+    "dominant_colors": [
+      "#C9A06A",
+      "#6E7E90",
+      "#2E3640",
+      "#E8C79A",
+      "#1F3A5E"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "pale"
+    },
+    "water_visible": true,
+    "rating": 3,
+    "rating_if_clean_original": 8
+  },
+  {
+    "id": "DIewzEcvQUv",
+    "file": "DIewzEcvQUv.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "2025 Mayor's Cup girls poster over the golden-hour frame: a girls 4+ bow-on, four rowers and cox in silhouette, oars fanned wide over glassy pewter water, orange-to-lavender sunset above a black tree line and arched stone bridge, and a big dark-gabled Victorian boathouse with dock and moored boats at the right edge.",
+    "squad": "girls",
+    "usable_as": [
+      "TEXTURE_DETAIL"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Tied with DJFTbZhx_tU as the finest base photograph here, and the boat reads even more clearly. The bottom ~25% of open water and the left sunset band are completely clean.",
+    "dominant_colors": [
+      "#E9964A",
+      "#F3C58C",
+      "#6B7684",
+      "#24282D",
+      "#1F3A6E"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 5,
+    "rating_if_clean_original": 9.5
+  },
+  {
+    "id": "DIWKQGNxSeo",
+    "file": "DIWKQGNxSeo.jpg",
+    "w": 648,
+    "h": 648,
+    "category": "GRAPHIC_POSTER",
+    "description": "Postponement notice: the Mayor's Cup skyline poster desaturated to a pale blue-white wash, covered with falling-snow speckles and stamped with a huge red grunge 'POSTPONED' box across the middle.",
+    "squad": "boys",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Lowest resolution in the archive (648px) and the most degraded - the underlying artwork is largely obliterated.",
+    "dominant_colors": [
+      "#C8D2DE",
+      "#E8EEF4",
+      "#B4231F",
+      "#7A8798",
+      "#46586C"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "black (Vespoli)"
+    },
+    "water_visible": true,
+    "rating": 1,
+    "rating_if_clean_original": null
+  },
+  {
+    "id": "DIR5cGIRUpL",
+    "file": "DIR5cGIRUpL.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "2025 Mayor's Cup poster over the strongest skyline frame in the archive: a boys 8+ in a black Vespoli hull across the lower third, a long stone-arched bridge with pedestrians, and the full Back Bay skyline with the Prudential Tower under a dramatic blue-grey cloud deck.",
+    "squad": "boys",
+    "usable_as": [
+      "TEXTURE_DETAIL"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "The definitive Cambridge/Boston establishing shot. Text sits in the sky and centre; the boat, bridge and lower water are clean and the bottom ~40% crops cleanly.",
+    "dominant_colors": [
+      "#4A6484",
+      "#7E93AC",
+      "#1E2830",
+      "#A8BACB",
+      "#C9A24A"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "black (Vespoli)"
+    },
+    "water_visible": true,
+    "rating": 5,
+    "rating_if_clean_original": 9
+  },
+  {
+    "id": "DI6PJznRbVe",
+    "file": "DI6PJznRbVe.jpg",
+    "w": 1080,
+    "h": 1080,
+    "category": "GRAPHIC_POSTER",
+    "description": "CRLS vs NMH, Brooks and Middlesex poster over the golden-hour frame: a blazing orange sunset with cirrus above a silhouetted tree line and a multi-arch stone bridge, an 8+ coming bow-on with oars fanned wide and squared, a glowing bow light, on glassy copper-to-pewter water.",
+    "squad": "mixed",
+    "usable_as": [
+      "TEXTURE_DETAIL",
+      "SECTION_BACKGROUND"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Leaves more photograph visible than any other poster: the overlay is a narrow centre column and the entire bottom ~25% plus both lower corners are clean open water. Best crop candidate in the archive.",
+    "dominant_colors": [
+      "#E98A3C",
+      "#F4C486",
+      "#6E7A88",
+      "#22262B",
+      "#B4623A"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "8+",
+      "hull_color": "dark"
+    },
+    "water_visible": true,
+    "rating": 5.5,
+    "rating_if_clean_original": 9
+  },
+  {
+    "id": "DHV6u5Rx6yx",
+    "file": "DHV6u5Rx6yx.jpg",
+    "w": 1440,
+    "h": 1440,
+    "category": "GRAPHIC_POSTER",
+    "description": "'2025 Spring Crew is back' schedule announcement, heavily navy-tinted, over a candid base of a girls four at rest in a black Resolute hull - five girls in CRLS unisuits with neon-green visors and pink towels, oars feathered flat, a flat lake and a water tower on the horizon.",
+    "squad": "girls",
+    "usable_as": [
+      "NOT_USABLE"
+    ],
+    "crop_orientation": "square",
+    "quality_notes": "Falcon logo sits directly over the crew's faces and the base is graded roughly 45% darker. Candid and human underneath; the venue is a southern training camp, not the Charles.",
+    "dominant_colors": [
+      "#1E3A63",
+      "#2E5A8C",
+      "#F2C300",
+      "#E02B20",
+      "#FFFFFF"
+    ],
+    "has_burned_in_text": true,
+    "boat_visible": {
+      "visible": true,
+      "type": "4x/4+",
+      "hull_color": "black (Resolute)"
+    },
+    "water_visible": true,
+    "rating": 3,
+    "rating_if_clean_original": 6.5
+  }
+]

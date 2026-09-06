@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CRLS Crew — Art Direction Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#08090b;
+    --charcoal:#131519;
+    --graphite:#23262c;
+    --steel:#565b63;
+    --grey:#8b9099;
+    --silver:#b9bec6;
+    --fog:#e6e8eb;
+    --paper:#e9e7e2;
+    --sans:'Space Grotesk',system-ui,sans-serif;
+    --serif:'Fraunces',Georgia,serif;
+    --display:'Anton',Impact,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--ink);
+    color:var(--fog);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .scroller{
+    height:100vh;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+    scroll-behavior:smooth;
+  }
+  .panel{
+    position:relative;
+    min-height:100vh;
+    scroll-snap-align:start;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    padding:96px 6vw 120px;
+  }
+  .eyebrow{
+    position:absolute; top:38px; left:6vw;
+    font-size:12px; letter-spacing:.42em; text-transform:uppercase;
+    font-weight:500; z-index:6; display:flex; gap:14px; align-items:center;
+  }
+  .eyebrow .num{opacity:.55}
+  .eyebrow .bar{width:44px;height:1px;background:currentColor;opacity:.4}
+  .whereitshines{
+    position:absolute; bottom:40px; left:6vw; right:6vw; z-index:6;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+    flex-wrap:wrap;
+  }
+  .wis-note{max-width:52ch; font-size:13.5px; line-height:1.55; opacity:.72}
+  .wis-note b{font-weight:500; opacity:1}
+  .palette{display:flex; gap:0; margin-top:14px; border-radius:2px; overflow:hidden; width:180px; height:14px}
+  .palette span{flex:1}
+  .choose{
+    font-family:var(--sans); font-size:12px; letter-spacing:.22em; text-transform:uppercase;
+    font-weight:500; padding:14px 22px; border-radius:2px; cursor:pointer;
+    background:transparent; transition:.35s ease; white-space:nowrap;
+  }
+  .choose:hover{transform:translateY(-2px)}
+  svg .hull{transition:.4s}
+  .motif{width:min(78vw,900px)}
+  .motif svg{width:100%;height:auto;display:block}
+
+  /* grain overlay */
+  .grain{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;z-index:5}
+
+  /* ---------- PANEL 01 — DARK CINEMATIC ---------- */
+  #p1{background:radial-gradient(120% 90% at 50% -10%, #1b2027 0%, #0c0e12 45%, #08090b 100%);color:var(--fog)}
+  #p1 .mist{position:absolute;inset:0;background:
+     radial-gradient(60% 40% at 50% 20%, rgba(160,180,200,.10), transparent 70%);
+     filter:blur(6px);animation:drift 18s ease-in-out infinite alternate}
+  #p1 .stage{position:relative;text-align:center;z-index:4}
+  #p1 .kicker{font-size:12px;letter-spacing:.5em;text-transform:uppercase;color:var(--grey);margin-bottom:26px}
+  #p1 .title{font-family:var(--sans);font-weight:300;font-size:clamp(48px,11vw,150px);letter-spacing:.14em;line-height:.94}
+  #p1 .title b{font-weight:700}
+  #p1 .sub{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(16px,2.4vw,26px);color:var(--silver);margin-top:22px}
+  #p1 .shellwrap{position:relative;margin:6px auto 30px;width:min(80vw,760px)}
+  #p1 .glide{animation:glide 14s ease-in-out infinite alternate}
+  #p1 .reflection{transform:scaleY(-1);opacity:.16;filter:blur(2px);margin-top:-6px;
+     -webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+  #p1 .choose{border:1px solid var(--steel);color:var(--fog)}
+  #p1 .choose:hover{background:var(--fog);color:var(--ink)}
+
+  /* ---------- PANEL 02 — HERITAGE COLLEGIATE ---------- */
+  #p2{background:
+      radial-gradient(130% 120% at 50% 0%, #f2f0ec 0%, #e4e1da 60%, #d7d3ca 100%);
+      color:#14151a}
+  #p2 .crest{width:min(70vw,440px);position:relative;z-index:4}
+  #p2 .ringtext{font-family:var(--sans);font-size:12.5px;letter-spacing:.16em;fill:#14151a;text-transform:uppercase}
+  #p2 .est{font-family:var(--serif);font-style:italic;font-size:15px;fill:#3a3c42}
+  #p2 .mono{font-family:var(--display);font-size:96px;fill:#14151a;letter-spacing:2px}
+  #p2 .crewword{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.2vw,46px);letter-spacing:.32em;text-transform:uppercase;text-align:center;margin-top:26px;color:#22242a}
+  #p2 .rule{width:70px;height:2px;background:#14151a;margin:20px auto 0}
+  #p2 .paper{position:absolute;inset:0;opacity:.5;mix-blend-mode:multiply;z-index:1}
+  #p2 .choose{border:1px solid #14151a;color:#14151a}
+  #p2 .choose:hover{background:#14151a;color:var(--paper)}
+  #p2 .wis-note{color:#33353b}
+  #p2 .eyebrow{color:#22242a}
+
+  /* ---------- PANEL 03 — KINETIC SPORT ---------- */
+  #p3{background:var(--ink);color:#fff}
+  #p3 .streaks{position:absolute;inset:0;z-index:1;overflow:hidden}
+  #p3 .streaks span{position:absolute;height:1px;left:-20%;width:140%;
+     background:linear-gradient(90deg,transparent,rgba(255,255,255,.10),transparent);
+     transform:rotate(-14deg);animation:zoom 2.4s linear infinite}
+  #p3 .huge{position:relative;z-index:4;text-align:center;line-height:.8}
+  #p3 .huge .l1{font-family:var(--display);font-size:clamp(64px,19vw,260px);letter-spacing:-.02em;
+     background:linear-gradient(180deg,#fff,#7d828b);-webkit-background-clip:text;background-clip:text;color:transparent;
+     transform:skewX(-7deg)}
+  #p3 .huge .l2{font-family:var(--display);font-size:clamp(64px,19vw,260px);letter-spacing:-.02em;color:#1c1f24;
+     -webkit-text-stroke:1.5px #4a4f57;transform:skewX(-7deg)}
+  #p3 .tag{display:inline-block;margin-top:30px;font-size:12px;letter-spacing:.44em;text-transform:uppercase;
+     color:var(--grey);border-top:1px solid var(--graphite);padding-top:16px}
+  #p3 .streakshell{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) skewX(-7deg);
+     width:min(84vw,940px);opacity:.9;z-index:2;animation:shove 3.4s ease-in-out infinite}
+  #p3 .choose{border:1px solid #fff;color:#fff}
+  #p3 .choose:hover{background:#fff;color:var(--ink)}
+
+  /* ---------- PANEL 04 — LIGHT EDITORIAL ---------- */
+  #p4{background:#f5f5f3;color:#101216}
+  #p4 .grid{width:100%;max-width:1180px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;z-index:4}
+  #p4 .lead{font-family:var(--serif);font-weight:300;font-size:clamp(40px,6.4vw,92px);line-height:1.02;letter-spacing:-.01em}
+  #p4 .lead em{font-style:italic;color:#565b63}
+  #p4 .meta{font-size:13px;letter-spacing:.05em;line-height:1.7;color:#484c54;max-width:34ch;margin-top:28px}
+  #p4 .idx{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#8b9099;margin-bottom:20px}
+  #p4 .lineshell{width:100%}
+  #p4 .lineshell svg{width:100%}
+  #p4 .choose{border:1px solid #101216;color:#101216;margin-top:30px}
+  #p4 .choose:hover{background:#101216;color:#f5f5f3}
+  #p4 .wis-note{color:#484c54}
+  #p4 .eyebrow{color:#101216}
+
+  /* nav dots */
+  .dots{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:30;display:flex;flex-direction:column;gap:16px}
+  .dots a{width:9px;height:9px;border-radius:50%;background:rgba(140,144,153,.4);transition:.3s;display:block}
+  .dots a.on{background:#fff;transform:scale(1.35)}
+  .dots a[data-light].on{background:#101216}
+
+  .brandtag{position:fixed;top:32px;left:6vw;z-index:31;font-size:12px;letter-spacing:.3em;text-transform:uppercase;
+     font-weight:700;mix-blend-mode:difference;color:#fff;pointer-events:none}
+
+  @keyframes drift{0%{transform:translateX(-4%)}100%{transform:translateX(4%)}}
+  @keyframes glide{0%{transform:translateX(-3%)}100%{transform:translateX(3%)}}
+  @keyframes zoom{0%{transform:translateX(-30%) rotate(-14deg);opacity:0}
+     10%{opacity:1}90%{opacity:1}100%{transform:translateX(30%) rotate(-14deg);opacity:0}}
+  @keyframes shove{0%,100%{transform:translate(-50%,-50%) skewX(-7deg) translateX(-1.5%)}
+     50%{transform:translate(-50%,-50%) skewX(-7deg) translateX(1.5%)}}
+
+  @media (max-width:820px){
+    #p4 .grid{grid-template-columns:1fr;gap:30px}
+    .whereitshines{flex-direction:column;align-items:flex-start}
+    .dots{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+<div class="brandtag">CRLS Crew · Art Direction</div>
+<div class="dots" id="dots">
+  <a href="#p1" data-i="0" class="on"></a>
+  <a href="#p2" data-i="1" data-light></a>
+  <a href="#p3" data-i="2"></a>
+  <a href="#p4" data-i="3" data-light></a>
+</div>
+
+<div class="scroller" id="scroller">
+
+  <!-- 01 DARK CINEMATIC -->
+  <section class="panel" id="p1">
+    <div class="mist"></div>
+    <div class="eyebrow"><span class="num">01</span><span class="bar"></span><span>Dark Cinematic</span></div>
+    <div class="stage">
+      <div class="kicker">Misty dawn on the water</div>
+      <div class="shellwrap">
+        <div class="glide" data-shell='{"stroke":"#c7ccd3","hull":"#c7ccd3","blade":"#8b9099","w":1.4}'></div>
+        <div class="reflection" data-shell='{"stroke":"#c7ccd3","hull":"#c7ccd3","blade":"#8b9099","w":1.4}'></div>
+      </div>
+      <div class="title">CRLS <b>CREW</b></div>
+      <div class="sub">silence, mist, and eight as one</div>
+    </div>
+    <div class="whereitshines">
+      <div>
+        <div class="wis-note"><b>Where it shines:</b> a story-driven, film-grade showcase. Full-bleed dawn footage of your 3D shells gliding through fog, moody duotone, cinematic scroll. Feels premium and unforgettable — the strongest awwwards register.</div>
+        <div class="palette"><span style="background:#08090b"></span><span style="background:#23262c"></span><span style="background:#565b63"></span><span style="background:#8b9099"></span><span style="background:#e6e8eb"></span></div>
+      </div>
+      <button class="choose" data-hermes-send="Let's build the full CRLS crew site in the Dark Cinematic direction (01) — misty dawn, moody grey/black duotone, film grain, with the 3D boathouse fleet.">Choose Dark Cinematic →</button>
+    </div>
+    <div class="grain" data-grain></div>
+  </section>
+
+  <!-- 02 HERITAGE COLLEGIATE -->
+  <section class="panel" id="p2">
+    <div class="eyebrow"><span class="num">02</span><span class="bar"></span><span>Heritage Collegiate</span></div>
+    <div style="text-align:center;z-index:4">
+      <div class="crest">
+        <svg viewBox="0 0 440 440">
+          <defs>
+            <path id="ringTop" d="M 60 220 A 160 160 0 0 1 380 220" />
+            <path id="ringBot" d="M 76 220 A 144 144 0 0 0 364 220" />
+          </defs>
+          <circle cx="220" cy="220" r="205" fill="none" stroke="#14151a" stroke-width="2"/>
+          <circle cx="220" cy="220" r="192" fill="none" stroke="#14151a" stroke-width="1"/>
+          <circle cx="220" cy="220" r="150" fill="none" stroke="#14151a" stroke-width="1" stroke-dasharray="2 6"/>
+          <text class="ringtext"><textPath href="#ringTop" startOffset="50%" text-anchor="middle">Cambridge Rindge &amp; Latin</textPath></text>
+          <text class="ringtext"><textPath href="#ringBot" startOffset="50%" text-anchor="middle">· Rowing Club ·</textPath></text>
+          <g transform="translate(220,196)">
+            <text class="mono" text-anchor="middle" dominant-baseline="middle" dy="6">CRLS</text>
+          </g>
+          <g transform="translate(220,270)" id="crestShell"></g>
+          <text class="est" x="220" y="322" text-anchor="middle">Est. MM · Vēritās in Rēmīs</text>
+          <g stroke="#14151a" stroke-width="1.5" fill="none">
+            <path d="M150 350 q -14 -22 -4 -44"/><path d="M290 350 q 14 -22 4 -44"/>
+          </g>
+        </svg>
+      </div>
+      <div class="crewword">Rowing Club</div>
+      <div class="rule"></div>
+    </div>
+    <div class="whereitshines">
+      <div>
+        <div class="wis-note"><b>Where it shines:</b> tradition and pride. A crest, oxford serif, engraved textures, a wall-of-honor for past crews and results. Timeless and school-official — grey/black reads as heritage, not corporate.</div>
+        <div class="palette"><span style="background:#d7d3ca"></span><span style="background:#8b9099"></span><span style="background:#565b63"></span><span style="background:#23262c"></span><span style="background:#14151a"></span></div>
+      </div>
+      <button class="choose" data-hermes-send="Let's build the full CRLS crew site in the Heritage Collegiate direction (02) — crest, oxford serif, engraved texture, grey/black, with a 3D boathouse fleet.">Choose Heritage →</button>
+    </div>
+    <div class="grain" data-grain></div>
+  </section>
+
+  <!-- 03 KINETIC SPORT -->
+  <section class="panel" id="p3">
+    <div class="eyebrow"><span class="num">03</span><span class="bar"></span><span>Kinetic Sport</span></div>
+    <div class="streaks" id="streaks"></div>
+    <div class="streakshell" data-shell='{"stroke":"#2a2e35","hull":"#2a2e35","blade":"#3a3f47","w":2}'></div>
+    <div class="huge">
+      <div class="l1">POWER</div>
+      <div class="l2">TEN</div>
+      <div class="tag">Boat speed · raw energy · CRLS crew</div>
+    </div>
+    <div class="whereitshines">
+      <div>
+        <div class="wis-note"><b>Where it shines:</b> high-energy, scroll-jacked motion. Huge condensed type, speed streaks, kinetic 3D shells ripping across the viewport. Feels athletic and modern — great for recruiting and hype reels.</div>
+        <div class="palette"><span style="background:#08090b"></span><span style="background:#1c1f24"></span><span style="background:#4a4f57"></span><span style="background:#8b9099"></span><span style="background:#ffffff"></span></div>
+      </div>
+      <button class="choose" data-hermes-send="Let's build the full CRLS crew site in the Kinetic Sport direction (03) — huge condensed type, speed streaks, high-energy motion, grey/black, with a 3D boathouse fleet.">Choose Kinetic →</button>
+    </div>
+    <div class="grain" data-grain></div>
+  </section>
+
+  <!-- 04 LIGHT EDITORIAL -->
+  <section class="panel" id="p4">
+    <div class="eyebrow"><span class="num">04</span><span class="bar"></span><span>Light Editorial</span></div>
+    <div class="grid">
+      <div>
+        <div class="idx">The Fleet — A Study</div>
+        <div class="lead">Eight bodies,<br><em>one</em> boat,<br>zero&nbsp;wasted<br>motion.</div>
+        <div class="meta">An airy, gallery-grade layout with generous whitespace, refined serif, and quiet grey/black line-art. Lets your 3D boat models breathe as the hero — museum, not marketing.</div>
+        <button class="choose" data-hermes-send="Let's build the full CRLS crew site in the Light Editorial direction (04) — airy whitespace, refined serif, quiet grey/black line-art, with a 3D boathouse fleet as the hero.">Choose Editorial →</button>
+      </div>
+      <div class="lineshell" data-shell='{"stroke":"#101216","hull":"none","blade":"#101216","w":1.6}'></div>
+    </div>
+    <div class="whereitshines">
+      <div class="wis-note"><b>Where it shines:</b> product-forward showcase. Minimalism forces focus onto craft — perfect if the 3D fleet is the star and you want a sophisticated, understated feel.</div>
+      <div class="palette"><span style="background:#f5f5f3"></span><span style="background:#b9bec6"></span><span style="background:#8b9099"></span><span style="background:#565b63"></span><span style="background:#101216"></span></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// ---- Rowing "eight" shell generator (top-view) ----
+function drawEight(opts){
+  const o = Object.assign({stroke:'#fff',hull:'#fff',blade:'#888',w:1.6},opts);
+  const N=8, x0=150, x1=850, cy=130, oarLen=64;
+  const W=1000,H=260;
+  let oars='';
+  for(let i=0;i<N;i++){
+    const t=i/(N-1);
+    const x=x0+t*(x1-x0);
+    const up = i%2===0 ? -1 : 1;
+    const yEnd = cy + up*oarLen;
+    const bx = x + up*4; // slight sweep
+    oars += `<line x1="${x}" y1="${cy}" x2="${bx}" y2="${yEnd}" stroke="${o.blade}" stroke-width="${o.w}" stroke-linecap="round"/>`;
+    oars += `<ellipse cx="${bx}" cy="${yEnd+up*8}" rx="5.5" ry="12" fill="${o.blade}" transform="rotate(${up*10} ${bx} ${yEnd})"/>`;
+    // seat marks along hull
+    oars += `<circle cx="${x}" cy="${cy}" r="2.4" fill="${o.stroke}"/>`;
+  }
+  // long thin hull with sharp bow/stern
+  const bow=x1+90, stern=x0-90, half=7;
+  const hull=`M ${stern} ${cy} C ${stern+60} ${cy-half}, ${bow-60} ${cy-half}, ${bow} ${cy}
+              C ${bow-60} ${cy+half}, ${stern+60} ${cy+half}, ${stern} ${cy} Z`;
+  const coxpt = stern+40;
+  return `<svg viewBox="0 0 ${W} ${H}" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="rowing eight">
+    ${oars}
+    <path class="hull" d="${hull}" fill="${o.hull}" stroke="${o.stroke}" stroke-width="${o.w}"/>
+    <circle cx="${coxpt}" cy="${cy}" r="3.4" fill="none" stroke="${o.stroke}" stroke-width="${o.w}"/>
+  </svg>`;
+}
+document.querySelectorAll('[data-shell]').forEach(el=>{
+  try{ el.innerHTML = drawEight(JSON.parse(el.getAttribute('data-shell'))); }catch(e){ console.warn(e); }
+});
+// crest shell (smaller)
+const cs=document.getElementById('crestShell');
+if(cs){
+  cs.innerHTML = drawEight({stroke:'#14151a',hull:'none',blade:'#14151a',w:2});
+  const svg=cs.querySelector('svg'); svg.setAttribute('width','230'); svg.setAttribute('height','60');
+  svg.setAttribute('x','-115'); svg.setAttribute('y','-30');
+}
+
+// ---- kinetic streaks ----
+const st=document.getElementById('streaks');
+if(st){ for(let i=0;i<9;i++){ const s=document.createElement('span');
+  s.style.top=(8+i*10)+'%'; s.style.animationDelay=(i*0.26)+'s';
+  s.style.animationDuration=(1.8+ (i%3)*0.5)+'s'; st.appendChild(s);} }
+
+// ---- grain (shared svg noise as data-uri) ----
+const noise = "data:image/svg+xml;utf8," + encodeURIComponent(
+  `<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>`);
+document.querySelectorAll('[data-grain]').forEach(g=>{ g.style.backgroundImage=`url("${noise}")`; });
+
+// ---- nav dots active state ----
+const scroller=document.getElementById('scroller');
+const panels=[...document.querySelectorAll('.panel')];
+const dots=[...document.querySelectorAll('#dots a')];
+const io=new IntersectionObserver((ents)=>{
+  ents.forEach(e=>{ if(e.isIntersecting){
+    const i=panels.indexOf(e.target);
+    dots.forEach(d=>d.classList.remove('on'));
+    if(dots[i]) dots[i].classList.add('on');
+  }});
+},{root:scroller,threshold:.55});
+panels.forEach(p=>io.observe(p));
+</script>
+</body>
+</html>

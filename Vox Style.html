@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CRLS Crew — Explainer (Vox-style)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --accent:#fff100;
+    --accent-ink:#0a0a0a;
+    --ink:#0a0a0a;
+    --body:#26272b;
+    --muted:#6b6d75;
+    --hair:#d9dadd;
+    --bg:#ffffff;
+    --wash:#f4f4f2;
+    --sans:'Archivo',Helvetica,Arial,sans-serif;
+    --serif:'Source Serif 4',Georgia,serif;
+    --max:1180px;
+  }
+  html[data-theme="crls"]{
+    --accent:#2f3237;
+    --accent-ink:#ffffff;
+    --wash:#f1f1ef;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.5}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+
+  /* ---------- masthead ---------- */
+  .top{border-bottom:3px solid var(--ink);position:sticky;top:0;background:var(--bg);z-index:40}
+  .top .wrap{display:flex;align-items:center;gap:20px;height:62px}
+  .logo{background:var(--accent);color:var(--accent-ink);font-weight:900;font-size:19px;letter-spacing:-.02em;
+        padding:7px 11px;line-height:1;transition:.3s}
+  .navs{display:flex;gap:22px;font-size:13px;font-weight:600;color:var(--body);flex:1}
+  .navs span{cursor:pointer;padding-bottom:2px;border-bottom:2px solid transparent}
+  .navs span:hover{border-color:var(--ink)}
+  .toggle{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .toggle button{font:inherit;border:2px solid var(--ink);background:var(--bg);color:var(--ink);
+     padding:6px 10px;cursor:pointer;line-height:1;transition:.2s}
+  .toggle button.on{background:var(--ink);color:var(--bg)}
+
+  /* ---------- hero ---------- */
+  .kicker{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:12px;
+     letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;margin-bottom:20px;transition:.3s}
+  h1{font-size:clamp(38px,7.2vw,86px);font-weight:900;line-height:.98;letter-spacing:-.035em;max-width:16ch}
+  .deck{font-family:var(--serif);font-size:clamp(17px,2.1vw,23px);color:var(--body);max-width:60ch;margin-top:22px;line-height:1.5}
+  .byline{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px;padding:14px 0;
+     border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);font-size:12.5px;color:var(--muted);font-weight:600}
+  .byline b{color:var(--ink);font-weight:800}
+  section{padding:64px 0}
+  .hero{padding:52px 0 26px}
+
+  /* ---------- section headers ---------- */
+  .shead{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .snum{font-weight:900;font-size:15px;background:var(--ink);color:var(--bg);width:30px;height:30px;
+     display:grid;place-items:center;flex:none;align-self:center}
+  .shead h2{font-size:clamp(26px,3.6vw,42px);font-weight:900;letter-spacing:-.025em;line-height:1.05}
+  .sdek{font-family:var(--serif);color:var(--body);max-width:62ch;font-size:17px;margin:10px 0 30px;line-height:1.55}
+
+  /* ---------- diagram ---------- */
+  .figure{background:var(--wash);border:1px solid var(--hair);padding:26px 20px 18px;transition:.3s}
+  .figure svg{width:100%;height:auto;display:block}
+  .fcap{font-size:12.5px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--hair);
+     display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+  .fcap b{color:var(--ink);font-weight:800;flex:none}
+  .seatg{cursor:pointer}
+  .seatg .hit{fill:transparent}
+  .seatg .dot{transition:.18s}
+  .seatg:hover .dot,.seatg.act .dot{r:11}
+
+  /* ---------- seat readout ---------- */
+  .readout{display:grid;grid-template-columns:auto 1fr;gap:0 18px;align-items:center;margin-top:16px;
+     background:var(--ink);color:#fff;padding:16px 20px}
+  .readout .rnum{font-weight:900;font-size:34px;line-height:1;color:var(--accent);min-width:52px;transition:.3s}
+  .readout .rtit{font-weight:800;font-size:15px;letter-spacing:.02em}
+  .readout .rtxt{font-size:13.5px;color:#c9cace;margin-top:3px;line-height:1.5}
+
+  /* ---------- stroke cycle ---------- */
+  .cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--hair);border:1px solid var(--hair)}
+  .cyc{background:var(--bg);padding:18px 16px 20px}
+  .cyc svg{width:100%;height:auto;display:block}
+  .cyc .cn{font-weight:900;font-size:12px;color:var(--muted);letter-spacing:.1em}
+  .cyc h4{font-size:19px;font-weight:900;letter-spacing:-.01em;margin:2px 0 6px}
+  .cyc p{font-size:13px;color:var(--body);line-height:1.5}
+  .cyc.hot{background:var(--accent)}
+  .cyc.hot .cn{color:rgba(0,0,0,.55)}
+  html[data-theme="crls"] .cyc.hot{background:var(--ink)}
+  html[data-theme="crls"] .cyc.hot h4,html[data-theme="crls"] .cyc.hot p{color:#fff}
+  html[data-theme="crls"] .cyc.hot .cn{color:#9a9ca2}
+
+  /* ---------- fleet ---------- */
+  .fleet{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2px;background:var(--hair);border:1px solid var(--hair)}
+  .boat{background:var(--bg);padding:22px 20px 24px;transition:.2s;cursor:default}
+  .boat:hover{background:var(--wash)}
+  .boat svg{width:100%;height:auto;margin:6px 0 14px}
+  .btag{font-weight:900;font-size:28px;letter-spacing:-.03em}
+  .bname{font-weight:700;font-size:13.5px;color:var(--body);margin-top:1px}
+  .bmeta{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.55;border-top:1px solid var(--hair);padding-top:10px}
+  .bmeta i{font-style:normal;color:var(--ink);font-weight:700}
+
+  /* ---------- pull quote ---------- */
+  .pull{background:var(--ink);color:#fff;padding:60px 0}
+  .pull .q{font-size:clamp(26px,4.6vw,54px);font-weight:900;letter-spacing:-.03em;line-height:1.06;max-width:20ch}
+  .pull .q em{font-style:normal;color:var(--accent);transition:.3s}
+  .pull .a{margin-top:22px;font-size:13px;color:#9a9ca2;font-weight:600;letter-spacing:.04em}
+
+  /* ---------- numbers strip ---------- */
+  .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2px;background:var(--hair);border:1px solid var(--hair)}
+  .st{background:var(--bg);padding:22px 20px}
+  .st .n{font-weight:900;font-size:clamp(32px,4.4vw,46px);letter-spacing:-.04em;line-height:1}
+  .st .l{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+
+  .foot{border-top:3px solid var(--ink);padding:30px 0 60px;font-size:12.5px;color:var(--muted)}
+  .cta{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:14px;
+     padding:14px 20px;border:none;cursor:pointer;margin-top:14px;font-family:var(--sans);transition:.3s}
+  .cta:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+
+  @media(max-width:860px){
+    .cycle{grid-template-columns:repeat(2,1fr)}
+    .navs{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo">CRLS</div>
+    <nav class="navs"><span>The Fleet</span><span>The Crew</span><span>Results</span><span>Row With Us</span></nav>
+    <div class="toggle">
+      <button id="tv" class="on">Vox Yellow</button>
+      <button id="tc">CRLS Grey</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <div class="kicker">Explainer · Rowing</div>
+  <h1>Eight people, one boat, zero wasted motion.</h1>
+  <p class="deck">A rowing eight is the fastest human-powered boat on water — and the least forgiving. Here's how the shell, the seats, and the stroke actually work, using the CRLS fleet as the diagram.</p>
+  <div class="byline"><b>Cambridge Rindge &amp; Latin Crew</b><span>·</span><span>The Charles River</span><span>·</span><span>6 min read</span></div>
+</div>
+
+<!-- 1 · ANATOMY -->
+<section class="wrap">
+  <div class="shead"><div class="snum">1</div><h2>The anatomy of an eight</h2></div>
+  <p class="sdek">It's 60 feet long, 25 inches wide, and weighs about as much as one of the people in it. Hover any seat to see what that rower actually does.</p>
+
+  <div class="figure">
+    <svg id="anatomy" viewBox="0 0 1200 470" role="img" aria-label="Annotated diagram of a rowing eight"></svg>
+    <div class="fcap"><b>FIG. 1</b><span>Top view, bow to the right. Oars alternate sides — that's what keeps a 60-foot needle from spinning in circles.</span></div>
+  </div>
+
+  <div class="readout">
+    <div class="rnum" id="rnum">8</div>
+    <div><div class="rtit" id="rtit">Stroke seat</div><div class="rtxt" id="rtxt">Sets the rhythm and the rate. Everyone behind them is copying this rower exactly — a bad stroke seat makes seven other people slow.</div></div>
+  </div>
+</section>
+
+<!-- 2 · STROKE CYCLE -->
+<section class="wrap">
+  <div class="shead"><div class="snum">2</div><h2>One stroke, four moments</h2></div>
+  <p class="sdek">A racing crew repeats this about 220 times over a 2,000-meter race, and all eight bodies have to hit each moment within a fraction of a second of each other.</p>
+  <div class="cycle" id="cycle"></div>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="pull">
+  <div class="wrap">
+    <div class="q">The boat only moves fast when <em>nobody</em> can tell who's working hardest.</div>
+    <div class="a">— THE WHOLE POINT OF CREW</div>
+  </div>
+</div>
+
+<!-- 3 · FLEET -->
+<section class="wrap">
+  <div class="shead"><div class="snum">3</div><h2>The fleet</h2></div>
+  <p class="sdek">Boats are named by how many row, whether there's a coxswain, and whether each rower holds one oar (sweep) or two (sculling). This is where your 3D models will live — each card becomes a rotatable shell.</p>
+  <div class="fleet" id="fleet"></div>
+</section>
+
+<!-- 4 · NUMBERS -->
+<section class="wrap">
+  <div class="shead"><div class="snum">4</div><h2>By the numbers</h2></div>
+  <p class="sdek">Placeholder figures — swap in real CRLS results and I'll wire them up.</p>
+  <div class="strip">
+    <div class="st"><div class="n">2,000<span style="font-size:.5em">m</span></div><div class="l">Standard race distance</div></div>
+    <div class="st"><div class="n">36<span style="font-size:.5em">spm</span></div><div class="l">Racing stroke rate</div></div>
+    <div class="st"><div class="n">60<span style="font-size:.5em">ft</span></div><div class="l">Length of an eight</div></div>
+    <div class="st"><div class="n">5:30</div><div class="l">A quick schoolboy eight</div></div>
+  </div>
+  <button class="cta" data-hermes-send="Build the full CRLS crew site in this Vox explainer style, with the 3D boathouse fleet viewer.">Build the full site in this style →</button>
+</section>
+
+<div class="foot"><div class="wrap">CRLS Crew — art-direction prototype. Content is placeholder pending real team copy, results, and boat models.</div></div>
+
+<script>
+/* ============ shared shell drawing ============ */
+function shell(o){
+  const c=Object.assign({rowers:8,cox:true,scull:false,W:520,stroke:'#0a0a0a',w:2.2,oar:'#0a0a0a'},o);
+  const H=170, cy=85, pad=58;
+  const bow=c.W-16, stern=16, half=6.5;
+  const x0=pad, x1=c.W-pad-14;
+  let s='';
+  for(let i=0;i<c.rowers;i++){
+    const t=c.rowers===1?0.5:i/(c.rowers-1);
+    const x=x0+t*(x1-x0);
+    const sides = c.scull ? [-1,1] : [ i%2===0 ? -1 : 1 ];
+    sides.forEach(up=>{
+      const len=52, bx=x+up*3, ey=cy+up*len;
+      s+=`<line x1="${x}" y1="${cy}" x2="${bx}" y2="${ey}" stroke="${c.oar}" stroke-width="${c.w*0.8}" stroke-linecap="round"/>`;
+      s+=`<ellipse cx="${bx}" cy="${ey+up*9}" rx="4.6" ry="10" fill="${c.oar}"/>`;
+    });
+    s+=`<circle cx="${x}" cy="${cy}" r="2.6" fill="${c.stroke}"/>`;
+  }
+  const hull=`M ${stern} ${cy} C ${stern+70} ${cy-half}, ${bow-70} ${cy-half}, ${bow} ${cy}
+              C ${bow-70} ${cy+half}, ${stern+70} ${cy+half}, ${stern} ${cy} Z`;
+  s+=`<path d="${hull}" fill="none" stroke="${c.stroke}" stroke-width="${c.w}"/>`;
+  if(c.cox) s+=`<circle cx="${stern+30}" cy="${cy}" r="4" fill="none" stroke="${c.stroke}" stroke-width="${c.w}"/>`;
+  return `<svg viewBox="0 0 ${c.W} ${H}" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+}
+
+/* ============ 1. annotated anatomy ============ */
+const SEATS=[
+  {n:'8',t:'Stroke seat',d:'Sets the rhythm and the rate. Everyone behind them is copying this rower exactly — a bad stroke seat makes seven other people slow.'},
+  {n:'7',t:'Stern pair',d:'Backs up the stroke and transmits that rhythm to the rest of the boat. Usually one of the most technical rowers in the crew.'},
+  {n:'6',t:'Engine room',d:'Seats 3–6 are the biggest, strongest rowers. They sit at the widest part of the hull where raw power costs the boat the least balance.'},
+  {n:'5',t:'Engine room',d:'Pure horsepower. These seats are picked on erg scores and size more than on finesse.'},
+  {n:'4',t:'Engine room',d:'Pure horsepower. These seats are picked on erg scores and size more than on finesse.'},
+  {n:'3',t:'Engine room',d:'Seats 3–6 are the biggest, strongest rowers — the middle of the boat is where the speed comes from.'},
+  {n:'2',t:'Bow pair',d:'Balance and finesse. Every small error here gets amplified through the whole hull, so these seats go to the most technical rowers.'},
+  {n:'1',t:'Bow seat',d:'Closest to the bow, farthest from the cox. Sets the boat up, feels every wobble first, and crosses the line first.'}
+];
+(function(){
+  const svg=document.getElementById('anatomy');
+  const cy=235, oarLen=72, x0=250, x1=985, W=1200;
+  const bow=1120, stern=60, half=9;
+  let g='';
+  const hull=`M ${stern} ${cy} C ${stern+90} ${cy-half}, ${bow-90} ${cy-half}, ${bow} ${cy}
+              C ${bow-90} ${cy+half}, ${stern+90} ${cy+half}, ${stern} ${cy} Z`;
+  // oars + seats
+  const pos=[];
+  for(let i=0;i<8;i++){
+    const t=i/7, x=x0+t*(x1-x0); pos.push(x);
+    const up=i%2===0?-1:1, ey=cy+up*oarLen, bx=x+up*4;
+    g+=`<line x1="${x}" y1="${cy}" x2="${bx}" y2="${ey}" stroke="#9a9ca2" stroke-width="2.4" stroke-linecap="round"/>`;
+    g+=`<ellipse cx="${bx}" cy="${ey+up*12}" rx="6" ry="14" fill="#9a9ca2"/>`;
+  }
+  g+=`<path d="${hull}" fill="#fff" stroke="#0a0a0a" stroke-width="2.6"/>`;
+  g+=`<circle cx="${stern+42}" cy="${cy}" r="6" fill="none" stroke="#0a0a0a" stroke-width="2.6"/>`;
+  // interactive seats
+  pos.forEach((x,i)=>{
+    g+=`<g class="seatg" data-i="${i}">
+          <circle class="dot" cx="${x}" cy="${cy}" r="7" fill="#0a0a0a"/>
+          <circle class="hit" cx="${x}" cy="${cy}" r="30"/>
+          <text x="${x}" y="${cy-18}" text-anchor="middle" font-family="Archivo" font-size="14" font-weight="800" fill="#6b6d75">${SEATS[i].n}</text>
+        </g>`;
+  });
+  // callouts
+  function call(lx,ly,tx,ty,label,sub,anchor){
+    return `<g>
+      <line x1="${lx}" y1="${ly+8}" x2="${tx}" y2="${ty}" stroke="#b9bbc0" stroke-width="1.4" stroke-dasharray="4 4"/>
+      <circle cx="${tx}" cy="${ty}" r="3.5" fill="#b9bbc0"/>
+      <text x="${lx}" y="${ly}" text-anchor="${anchor}" font-family="Archivo" font-size="15" font-weight="900" fill="#0a0a0a">${label}</text>
+      <text x="${lx}" y="${ly+19}" text-anchor="${anchor}" font-family="Archivo" font-size="13" fill="#6b6d75">${sub}</text></g>`;
+  }
+  g+=call(70,60,stern+42,cy-12,'COX','steers &amp; calls the race','start');
+  g+=call(300,58,pos[0],cy-30,'STROKE','sets the rhythm','middle');
+  // engine room bracket
+  const eL=pos[2]-24,eR=pos[5]+24;
+  g+=`<path d="M ${eL} 392 L ${eL} 404 L ${eR} 404 L ${eR} 392" fill="none" stroke="#b9bbc0" stroke-width="1.6"/>
+      <text x="${(eL+eR)/2}" y="430" text-anchor="middle" font-family="Archivo" font-size="15" font-weight="900" fill="#0a0a0a">THE ENGINE ROOM</text>
+      <text x="${(eL+eR)/2}" y="449" text-anchor="middle" font-family="Archivo" font-size="13" fill="#6b6d75">seats 3–6 · the power</text>`;
+  g+=call(1105,404,pos[7],cy+26,'BOW PAIR','balance &amp; finesse','end');
+  g+=call(1090,66,pos[6]+4,cy-oarLen-12,'BLADE','catches the water','end');
+  g+=call(690,58,pos[4],cy-oarLen+22,'RIGGER','the outboard lever','middle');
+  svg.innerHTML=g;
+
+  const rn=document.getElementById('rnum'),rt=document.getElementById('rtit'),rx=document.getElementById('rtxt');
+  svg.querySelectorAll('.seatg').forEach(el=>{
+    const set=()=>{const s=SEATS[+el.dataset.i];
+      svg.querySelectorAll('.seatg').forEach(o=>o.classList.remove('act'));
+      el.classList.add('act'); rn.textContent=s.n; rt.textContent=s.t; rx.textContent=s.d;};
+    el.addEventListener('mouseenter',set); el.addEventListener('click',set);
+  });
+})();
+
+/* ============ 2. stroke cycle ============ */
+const PHASES=[
+  {n:'01',t:'The Catch',d:'Shins vertical, body compressed and reaching. The blade drops in — this is the only moment that actually starts the boat moving.',
+   ank:[48,100],knee:[64,72],hip:[86,96],sho:[74,66],hand:[52,74],head:[68,54],blade:'in'},
+  {n:'02',t:'The Drive',d:'Legs go first, then the back swings, then the arms. Get that order wrong and you shove the boat down instead of forward.',
+   ank:[48,100],knee:[72,86],hip:[104,96],sho:[100,64],hand:[72,72],head:[97,52],blade:'in'},
+  {n:'03',t:'The Finish',d:'Legs flat, body leaning back, handle into the ribs. The blade pops out clean and square, without checking the run of the boat.',
+   ank:[48,100],knee:[80,97],hip:[116,96],sho:[128,66],hand:[104,76],head:[133,54],blade:'out'},
+  {n:'04',t:'The Recovery',d:'Hands away, body over, then slide up. Slower than the drive — this is where the hull is actually running fastest underneath you.',
+   ank:[48,100],knee:[72,88],hip:[100,96],sho:[92,66],hand:[62,72],head:[87,54],blade:'out'}
+];
+function rower(p,hot){
+  const ink=hot?'#0a0a0a':'#0a0a0a', mut=hot?'rgba(0,0,0,.45)':'#c3c4c8';
+  const L=(a,b,w,col)=>`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${col||ink}" stroke-width="${w||6}" stroke-linecap="round"/>`;
+  const oarlock=[168,64];
+  const bl = p.blade==='in' ? [205,118] : [205,92];
+  return `<svg viewBox="0 0 230 150" xmlns="http://www.w3.org/2000/svg">
+    <line x1="0" y1="126" x2="230" y2="126" stroke="${mut}" stroke-width="2"/>
+    <rect x="30" y="110" width="160" height="9" rx="4.5" fill="none" stroke="${mut}" stroke-width="2"/>
+    <line x1="60" y1="104" x2="130" y2="104" stroke="${mut}" stroke-width="2.5"/>
+    <line x1="44" y1="92" x2="52" y2="106" stroke="${mut}" stroke-width="3.5" stroke-linecap="round"/>
+    ${L(p.hand,oarlock,4,mut)}${L(oarlock,bl,4,mut)}
+    <ellipse cx="${bl[0]+6}" cy="${bl[1]+3}" rx="5" ry="10" fill="${mut}"/>
+    <circle cx="${oarlock[0]}" cy="${oarlock[1]}" r="4" fill="${mut}"/>
+    ${L(p.ank,p.knee,6.5)}${L(p.knee,p.hip,6.5)}
+    ${L(p.hip,p.sho,7.5)}${L(p.sho,p.hand,5.5)}
+    <circle cx="${p.head[0]}" cy="${p.head[1]}" r="8" fill="${ink}"/>
+    <rect x="${p.hip[0]-9}" y="${p.hip[1]+2}" width="18" height="6" rx="3" fill="${ink}"/>
+  </svg>`;
+}
+document.getElementById('cycle').innerHTML=PHASES.map((p,i)=>
+  `<div class="cyc${i===0?' hot':''}">${rower(p,i===0)}<div class="cn">${p.n}</div><h4>${p.t}</h4><p>${p.d}</p></div>`).join('');
+
+/* ============ 3. fleet ============ */
+const FLEET=[
+  {tag:'8+',name:'The Eight',rowers:8,cox:true,scull:false,meta:'<i>8 rowers + coxswain.</i> Sweep. The fastest boat on the water and the marquee event of any regatta.'},
+  {tag:'4+',name:'The Coxed Four',rowers:4,cox:true,scull:false,meta:'<i>4 rowers + coxswain.</i> Sweep. Where a lot of high-school crews learn to actually race.'},
+  {tag:'2x',name:'The Double',rowers:2,cox:false,scull:true,meta:'<i>2 rowers, two oars each.</i> Sculling. Nowhere to hide — pure technique and trust.'},
+  {tag:'1x',name:'The Single',rowers:1,cox:false,scull:true,meta:'<i>1 rower, two oars.</i> Sculling. The hardest boat to make go fast, and the best teacher.'}
+];
+document.getElementById('fleet').innerHTML=FLEET.map(b=>
+  `<div class="boat">${shell({rowers:b.rowers,cox:b.cox,scull:b.scull,W:460})}
+   <div class="btag">${b.tag}</div><div class="bname">${b.name}</div><div class="bmeta">${b.meta}</div></div>`).join('');
+
+/* ============ theme toggle ============ */
+const tv=document.getElementById('tv'),tc=document.getElementById('tc');
+tv.onclick=()=>{document.documentElement.removeAttribute('data-theme');tv.classList.add('on');tc.classList.remove('on');};
+tc.onclick=()=>{document.documentElement.setAttribute('data-theme','crls');tc.classList.add('on');tv.classList.remove('on');};
+</script>
+</body>
+</html>
