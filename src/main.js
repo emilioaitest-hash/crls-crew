@@ -306,16 +306,21 @@ function fillChart() {
   const el = document.getElementById('chart');
   if (!el) return;
   const max = Math.max(...SEASONS.map((s) => s.races));
+  // Mark the seasons the narrative turns on: the first year on record, the
+  // jump in 2015, the lost 2020 season, and the best year.
+  const keyYears = new Set([2007, 2015, 2020, 2026]);
   el.innerHTML = SEASONS.map((s) => {
-    const h = s.races ? (s.races / max) * 100 : 1.5;
+    const h = s.races ? Math.max(2, (s.races / max) * 100) : 1.5;
     const w = s.races ? (s.wins / s.races) * 100 : 0;
     const label = s.races
       ? `${s.year}: ${s.races} races, ${s.wins} won`
       : `${s.year}: no season`;
     return `
-      <div class="bar-col${s.races ? '' : ' dim'}" title="${label}">
-        <div class="bar" style="height:${h}%">
-          <div class="won" style="--w:${w}%"></div>
+      <div class="bar-col${s.races ? '' : ' dim'}"${keyYears.has(s.year) ? ' data-key="1"' : ''} title="${label}">
+        <div class="bar-track">
+          <div class="bar" style="height:${h}%">
+            <div class="won" style="--w:${w}%"></div>
+          </div>
         </div>
         <div class="bar-year">${s.year}</div>
       </div>`;
@@ -368,46 +373,59 @@ function initScroll(hero) {
   const label = document.getElementById('chapter-label');
   const chapters = [...document.querySelectorAll('[data-chapter]')];
 
-  // reveal
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    }
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
-  const watch = () => document.querySelectorAll('[data-reveal]:not(.in)').forEach((n) => io.observe(n));
-  watch();
-
-  // Anything already on screen at load is revealed immediately rather than
-  // waiting for an observer tick that a throttled tab may never deliver.
+  // Reveal is driven from the scroll tick rather than IntersectionObserver.
+  //
+  // Lenis animates a transform on the scroll container, so elements do not
+  // change position relative to the IO root and observers never fire — the
+  // page would scroll with every section still at opacity 0. Measuring
+  // ourselves on each tick is both correct under smooth scroll and cheap,
+  // because nodes drop out of the set as soon as they are revealed.
+  let pending = [...document.querySelectorAll('[data-reveal]')];
   const revealVisible = () => {
-    document.querySelectorAll('[data-reveal]:not(.in)').forEach((n) => {
+    if (!pending.length) return;
+    const limit = innerHeight * 0.92;
+    const still = [];
+    for (const n of pending) {
       const r = n.getBoundingClientRect();
-      if (r.top < innerHeight * 0.95 && r.bottom > 0) n.classList.add('in');
+      // Reveal once the top edge has come up past the trigger line. Anything
+      // already above the viewport counts as revealed too — jumping down the
+      // page must not leave a trail of permanently hidden sections behind.
+      if (r.top < limit) n.classList.add('in');
+      else still.push(n);
+    }
+    pending = still;
+  };
+  const watch = () => {
+    const known = new Set(pending);
+    document.querySelectorAll('[data-reveal]:not(.in)').forEach((n) => {
+      if (!known.has(n)) pending.push(n);
     });
+    revealVisible();
   };
   revealVisible();
-  setTimeout(revealVisible, 120);
 
-  // chart bars animate as a group
-  const cio = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      [...e.target.children].forEach((c, i) => {
-        setTimeout(() => c.classList.add('in'), reduced ? 0 : i * 38);
-      });
-      cio.unobserve(e.target);
-    }
-  }, { threshold: 0.25 });
+  // chart bars animate as a group, staggered
   const chart = document.getElementById('chart');
-  if (chart) cio.observe(chart);
+  let chartDone = false;
+  const maybeChart = () => {
+    if (chartDone || !chart) return;
+    const r = chart.getBoundingClientRect();
+    if (r.top > innerHeight * 0.85) return;
+    chartDone = true;
+    [...chart.children].forEach((c, i) => {
+      setTimeout(() => c.classList.add('in'), reduced ? 0 : i * 38);
+    });
+  };
 
   // counters
-  const nio = new IntersectionObserver((entries) => {
-    for (const e of entries) {
-      if (!e.isIntersecting) continue;
-      const el = e.target;
+  let counters = [...document.querySelectorAll('[data-count]')];
+  const maybeCount = () => {
+    if (!counters.length) return;
+    const still = [];
+    for (const el of counters) {
+      const r = el.getBoundingClientRect();
+      if (r.top > innerHeight * 0.9) { still.push(el); continue; }
       const target = +el.dataset.count;
-      nio.unobserve(el);
       if (reduced) { el.textContent = target.toLocaleString(); continue; }
       const t0 = performance.now(), dur = 1400;
       // Guarded by a timeout so a throttled tab still lands on the real number
@@ -422,10 +440,13 @@ function initScroll(hero) {
       };
       requestAnimationFrame(tick);
     }
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-count]').forEach((n) => nio.observe(n));
+    counters = still;
+  };
 
   function onScroll(y) {
+    revealVisible();
+    maybeChart();
+    maybeCount();
     const max = document.body.scrollHeight - innerHeight;
     const p = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
     if (prog) prog.style.setProperty('--p', (p * 100).toFixed(2) + '%');
@@ -457,6 +478,17 @@ function initScroll(hero) {
     }
   }
   onScroll(window.scrollY);
+
+  // Lenis swallows the browser's own scroll events while it is animating, and
+  // programmatic scrollTo never emits one at all. A cheap polled fallback keeps
+  // the reveal/chapter/progress state correct no matter how the page was moved
+  // — including by keyboard, anchor jump, or devtools. It costs one comparison
+  // per tick and stops doing any work once everything has been revealed.
+  let lastY = -1;
+  setInterval(() => {
+    const y = window.scrollY;
+    if (y !== lastY) { lastY = y; onScroll(y); }
+  }, 120);
 
   // hero lines: staged from a class so the resting state is plain CSS and the
   // animation cannot leave the type stuck half-revealed.

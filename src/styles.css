@@ -110,6 +110,19 @@ p:last-child { margin-bottom: 0; }
 .narrow { width: min(100% - var(--gutter) * 2, var(--measure)); margin-inline: auto; }
 .section { padding-block: var(--stack); position: relative; }
 
+/* Editorial two-column: heading sits left, prose sits in a measured column to
+   its right. On narrow screens they stack. This stops long sections reading as
+   a single ragged strip down the left edge of a very wide screen. */
+.split {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 5rem);
+  align-items: start;
+}
+@media (min-width: 62rem) {
+  .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+  .split > :first-child { position: sticky; top: 22vh; }
+}
+
 .rule { height: 1px; background: var(--rule); border: 0; margin: 0; }
 
 /* Chapter marker — the running spine of the story */
@@ -207,13 +220,17 @@ p:last-child { margin-bottom: 0; }
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 60;
-  background: linear-gradient(rgba(10,12,14,.55), transparent);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.1rem var(--gutter);
-  mix-blend-mode: difference;
   pointer-events: none;
+  /* A real scrim rather than mix-blend-mode: difference. Blend mode looked
+     clever on the hero and illegible everywhere else, colliding with body
+     copy as it scrolled underneath. */
+  background: linear-gradient(rgba(10,12,14,.92) 0%, rgba(10,12,14,.72) 55%, transparent 100%);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 .nav > * { pointer-events: auto; }
 .nav-mark {
@@ -223,24 +240,24 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: 0.02em;
   text-transform: uppercase;
   text-decoration: none;
-  color: #fff;
+  color: var(--bone);
 }
 .nav-prog {
   font-family: var(--mono);
   font-size: var(--t-micro);
   letter-spacing: 0.14em;
-  color: #fff;
+  color: var(--bone);
   text-transform: uppercase;
   display: flex;
   gap: 1.25rem;
   align-items: center;
 }
 .nav-prog .bar {
-  width: 5rem; height: 1px; background: rgba(255,255,255,.3); position: relative;
+  width: 5rem; height: 1px; background: rgba(244,241,234,.25); position: relative;
 }
 .nav-prog .bar i {
   position: absolute; inset: 0 auto 0 0; width: var(--p, 0%);
-  background: #fff; transition: width .15s linear;
+  background: var(--dawn); transition: width .15s linear;
 }
 
 /* ==========================================================================
@@ -452,13 +469,29 @@ p:last-child { margin-bottom: 0; }
    ========================================================================== */
 .chart {
   display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  gap: clamp(2px, .45vw, 7px);
-  align-items: end;
-  height: clamp(13rem, 26vh, 20rem);
+  /* 20 seasons. auto-fit would collapse; an explicit repeat keeps every year
+     present and equal-width at any viewport. */
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+  gap: clamp(3px, .5vw, 9px);
+  align-items: stretch;
+  height: clamp(16rem, 34vh, 26rem);
   margin-block: 2.5rem 1rem;
 }
-.bar-col { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+.bar-col {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* The track the bar grows inside. Flex-1 gives it a definite height, so the
+   bar's percentage height resolves against the full chart height rather than
+   collapsing to its own content. */
+.bar-track {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  min-height: 0;
+}
 .bar {
   width: 100%;
   background: var(--ink-3);
@@ -476,14 +509,18 @@ p:last-child { margin-bottom: 0; }
 .bar-col.dim .bar { background: var(--ink-2); }
 .bar-year {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: .02em;
   color: var(--grey-2);
   text-align: center;
-  margin-top: .5rem;
+  padding-top: .6rem;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
+  justify-self: center;
 }
+/* Emphasise the seasons the story turns on */
+.bar-col[data-key="1"] .bar { background: var(--ink-3); }
+.bar-col[data-key="1"] .bar-year { color: var(--bone-2); }
 .chart-key {
   display: flex; gap: 1.75rem; flex-wrap: wrap;
   font-family: var(--mono); font-size: var(--t-micro);
