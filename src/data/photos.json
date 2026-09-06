@@ -1,0 +1,102 @@
+[
+  {
+    "file": "DY-7vl_HNW6.jpg",
+    "category": "PODIUM_MEDAL",
+    "rating": 8.5,
+    "desc": "Boys 4+ still seated in their black hull at the dock, four rowers grinning and holding up bronze NEIRA medals on blue ribbons; coach and an adult kneeling behind on yellow dock matting. Professional row2k frame.",
+    "usable": [
+      "HERO_FULLBLEED",
+      "SECTION_BACKGROUND",
+      "GALLERY_TILE"
+    ],
+    "orient": "landscape",
+    "squad": "boys"
+  },
+  {
+    "file": "DOXG__QDz1p.jpg",
+    "category": "BOATHOUSE",
+    "rating": 8.5,
+    "desc": "Fourteen novice girls plus a coach in a long line on gravel, all holding a single long black oar horizontally across the frame. Behind them the Cambridge Boat Club: white clapboard, red geranium window boxes, an open bay glowing warm with racked shells inside, upper deck with people.",
+    "usable": [
+      "HERO_FULLBLEED",
+      "SECTION_BACKGROUND",
+      "GALLERY_TILE"
+    ],
+    "orient": "square",
+    "squad": "girls"
+  },
+  {
+    "file": "DWt1oCdjjKJ.jpg",
+    "category": "TEAM_PORTRAIT",
+    "rating": 8,
+    "desc": "Nine male rowers arm-in-arm on a wide wooden dock in white MIT unisuits with red block T. Behind them the Charles, dramatic storm clouds, the Boston skyline and a crew sitting in a shell; oars laid across the dock in the foreground.",
+    "usable": [
+      "HERO_FULLBLEED",
+      "SECTION_BACKGROUND",
+      "GALLERY_TILE"
+    ],
+    "orient": "landscape",
+    "squad": "boys"
+  },
+  {
+    "file": "DYTRVUeySLb.jpg",
+    "category": "TEAM_PORTRAIT",
+    "rating": 7.5,
+    "desc": "About twelve senior girls in a line on a wooden dock, each wearing the sweatshirt of the college she committed to (Wisconsin, Colby, Bates, Cornell, Middlebury, MIT, Macalester, Washington, Durham). River and green tree line behind.",
+    "usable": [
+      "SECTION_BACKGROUND",
+      "GALLERY_TILE",
+      "HERO_FULLBLEED"
+    ],
+    "orient": "square",
+    "squad": "girls"
+  },
+  {
+    "file": "DYuDYwgnI_0.jpg",
+    "category": "PODIUM_MEDAL",
+    "rating": 7,
+    "desc": "Five girls shoulder-to-shoulder on a gravel path at a regatta site, each wearing a NEIRA silver medal on a blue lanyard, in black CRLS unisuits. Blurred regatta tents and tall green trees behind.",
+    "usable": [
+      "GALLERY_TILE",
+      "PORTRAIT_INSET"
+    ],
+    "orient": "portrait",
+    "squad": "girls"
+  },
+  {
+    "file": "DYccfKfy-U7.jpg",
+    "category": "PODIUM_MEDAL",
+    "rating": 6.5,
+    "desc": "Twelve people arm-in-arm on grass before a white USRowing step-and-repeat banner: ten athletes in black CRLS unisuits wearing bronze medals, flanked by two coaches in grey CRLS CREW tees.",
+    "usable": [
+      "GALLERY_TILE",
+      "SECTION_BACKGROUND"
+    ],
+    "orient": "landscape",
+    "squad": "mixed"
+  },
+  {
+    "file": "DZc7FyzS00e.jpg",
+    "category": "TRAVEL",
+    "rating": 6,
+    "desc": "Six girls (five standing, one in a wheelchair) posed at the Nathan Benderson Park gold-mosaic monument sign with the USRowing Youth National Championships 2026 Sarasota logo. Palm trees and bright blue sky behind.",
+    "usable": [
+      "GALLERY_TILE",
+      "PORTRAIT_INSET"
+    ],
+    "orient": "landscape",
+    "squad": "girls"
+  },
+  {
+    "file": "DOjXd1Wj9BF.jpg",
+    "category": "BOATHOUSE",
+    "rating": 4,
+    "desc": "Cambridge Boat Club president John Lambert mid-speech, arms open, holding papers, addressing Fall Orientation inside the boathouse: white beadboard walls hung with framed watercolours, warm wooden floor, a Concept2 BikeErg in the foreground.",
+    "usable": [
+      "PORTRAIT_INSET",
+      "GALLERY_TILE"
+    ],
+    "orient": "portrait",
+    "squad": "unknown"
+  }
+]
