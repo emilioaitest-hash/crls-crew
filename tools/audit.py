@@ -24,7 +24,12 @@ import sys, time, json
 sys.path.insert(0, __file__.rsplit('/', 1)[0])
 import cdp  # noqa: E402
 
+import time as _t
 URL = sys.argv[1] if len(sys.argv) > 1 else "https://emilioaitest-hash.github.io/crls-crew/"
+# Always cache-bust. A stale CSS bundle once reported a contrast failure that
+# had already been fixed and deployed, which is a false alarm that costs a
+# debugging cycle every time.
+URL += ("&" if "?" in URL else "?") + f"audit={int(_t.time())}"
 W = int(sys.argv[2]) if len(sys.argv) > 2 else 2560
 H = int(sys.argv[3]) if len(sys.argv) > 3 else 1440
 
