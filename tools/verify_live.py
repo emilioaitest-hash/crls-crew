@@ -93,6 +93,8 @@ CHECKS = r"""
 })()
 """
 
+cdp.ev(c, "document.getElementById('record') && document.getElementById('record').scrollIntoView()")
+time.sleep(2.5)
 res = cdp.ev(c, CHECKS)
 print(f"=== {W}x{H} ===")
 print(json.dumps(res, indent=1))
