@@ -626,7 +626,7 @@ p:last-child { margin-bottom: 0; }
   font-size: var(--t-micro);
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--grey-2);
+  color: var(--grey);
   pointer-events: none;
 }
 
@@ -771,14 +771,16 @@ p:last-child { margin-bottom: 0; }
 .plate .credit {
   display: block;
   margin-top: .3rem;
-  color: var(--grey-2);
-  opacity: .8;
+  /* Photo credit and rights notice. This is the fifth place --grey-2 (3.25:1)
+     had to be removed; an extra opacity: .8 on top of it made this the least
+     legible text on the site, on the one line that carries a rights claim. */
+  color: var(--grey);
 }
 .plate figcaption {
   font-family: var(--mono);
   font-size: var(--t-micro);
   letter-spacing: .06em;
-  color: var(--grey-2);
+  color: var(--grey);
   margin-top: .7rem;
   text-transform: none;
 }
@@ -884,7 +886,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--mono);
   font-size: var(--t-micro);
   letter-spacing: .16em;
-  color: var(--grey-2);
+  color: var(--grey);
   padding-top: 1.5rem;
 }
 .silence-count {
