@@ -51,6 +51,11 @@ export const HISTORY = [
     way, the institution these rowers belong to is older than the country by more than a
     century.`,
     note: 'The program says 1643. Wikipedia and the school\'s motto page say 1648. Shown as disputed rather than resolved.',
+    aside: [
+      ['Founded', '1643 or 1648'],
+      ['Master', 'Elijah Corlett'],
+      ['Claim', '2nd public school in America'],
+    ],
     src: SOURCES.crls,
   },
   {
@@ -60,6 +65,11 @@ export const HISTORY = [
     fours against Rindge Technical School and Browne & Nichols — schools that sat within
     a mile of each other on either side of the river.`,
     note: 'The 1889 start date comes from the program\'s own history. No independent source was found for that specific year, though the era itself is well documented.',
+    aside: [
+      ['River', 'Charles'],
+      ['Rivals', 'Rindge Technical, Browne & Nichols'],
+      ['Boat class', 'Fours'],
+    ],
     src: SOURCES.crls,
   },
   {
@@ -68,6 +78,11 @@ export const HISTORY = [
     body: `The Harvard Crimson records Cambridge Latin, Rindge Technical and Browne &
     Nichols racing on the Charles on the same rainy afternoon. Rindge Tech loses the
     Harvard Challenge Cup by two feet.`,
+    aside: [
+      ['Event', 'Interscholastic regatta'],
+      ['Schools', 'Three, within one mile'],
+      ['Conditions', 'Rain'],
+    ],
     src: SOURCES.crimson1922,
   },
   {
@@ -75,6 +90,10 @@ export const HISTORY = [
     title: 'The public schools get their own regatta',
     body: `Rindge Technical wins the first regatta held by the new Schoolboy Rowing
     Association, then races the private-school crews the following day.`,
+    aside: [
+      ['New event', 'Public school regatta'],
+      ['Reason', 'Separate from private schools'],
+    ],
     src: SOURCES.crimson1926,
   },
   {
@@ -94,6 +113,11 @@ export const HISTORY = [
     timing is tight: the regatta was scheduled for June 1st, and the market broke that
     October. Whatever ended it, the boats went away and did not come back for sixty years.`,
     note: 'Causation is the program\'s account, not a documented fact. The 1929 season preceded the crash.',
+    aside: [
+      ['Last race', 'June 1929'],
+      ['Market broke', 'October 1929'],
+      ['Silence', '60 years'],
+    ],
     src: SOURCES.crls,
   },
   {
@@ -103,6 +127,11 @@ export const HISTORY = [
     that used to race each other are now the same school. Most sources date the merger to
     1977.`,
     note: 'The rowing history page says 1978; Wikipedia, History Cambridge and the Crimson all say 1977.',
+    aside: [
+      ['Merged', 'Cambridge High & Latin'],
+      ['With', 'Rindge Technical'],
+      ['Note', 'Most sources say 1977'],
+    ],
     src: SOURCES.crls,
   },
   {
@@ -112,6 +141,10 @@ export const HISTORY = [
     Community Rowing in Boston. For eleven years the crews race in another organization's
     name and another organization's colors. Teachers Linda Lipkin, Phyllis Bretholtz and
     Tobe Korsgren drive the kids to practice.`,
+    aside: [
+      ['Gap closed', '60 years'],
+      ['Rowed as', 'A borrowed name'],
+    ],
     src: SOURCES.crls,
   },
   {
@@ -120,6 +153,10 @@ export const HISTORY = [
     body: `Athletic Director Bill Bates and the coaches get a CRLS boat bay written into
     the remodeled Cambridge Boat Club. For the first time the program has somewhere to
     keep boats.`,
+    aside: [
+      ['Home', 'Cambridge Boat Club'],
+      ['Stretch', 'Powerhouse'],
+    ],
     src: SOURCES.crls,
   },
   {
@@ -130,6 +167,11 @@ export const HISTORY = [
     cannot row. By March it is a six-day-a-week varsity program with fifty kids, five
     boats, five races and two coaches.`,
     pull: true,
+    aside: [
+      ['Started with', '12 students'],
+      ['By March', '50 rowers'],
+      ['Boats', '5'],
+    ],
     src: SOURCES.crls,
   },
 ];

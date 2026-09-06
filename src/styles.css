@@ -200,7 +200,10 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--mono);
   font-size: var(--t-micro);
   letter-spacing: 0.06em;
-  color: var(--grey-2);
+  /* --grey-2 is 3.25:1 on ink and fails AA. These links are now the most
+     prominent text in the timeline's apparatus column, so they have to be
+     readable. --grey is 6.22:1. */
+  color: var(--grey);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color .25s var(--ease), border-color .25s var(--ease);
@@ -409,7 +412,12 @@ p:last-child { margin-bottom: 0; }
 /* ==========================================================================
    timeline
    ========================================================================== */
-.timeline { position: relative; }
+.timeline {
+  position: relative;
+  /* 6 + 34 + 32 rem of tracks plus two gaps: keeps the rule the same width as
+     the widest row rather than the container. */
+  max-width: 78rem;
+}
 .tl-item {
   display: grid;
   /* Year | prose (measured) | apparatus. The third track is what stops the
@@ -421,15 +429,19 @@ p:last-child { margin-bottom: 0; }
   border-top: 1px solid var(--rule-soft);
 }
 @media (min-width: 72rem) {
-  .tl-item { grid-template-columns: 6rem minmax(0, 34rem) minmax(0, 1fr); }
+  /* The apparatus track sizes to its content (max-content, capped) rather than
+     absorbing all remaining width. Otherwise the full-width border-top draws a
+     rule across several hundred pixels of nothing on wide screens. */
+  .tl-item { grid-template-columns: 6rem minmax(0, 34rem) minmax(0, 32rem); }
 }
 .tl-aside {
   display: flex;
   flex-direction: column;
   gap: .75rem;
-  align-items: flex-start;
+  align-items: stretch;   /* was flex-start, which shrink-wrapped the facts */
   padding-top: .4rem;
 }
+.tl-aside > .src { align-self: flex-start; }
 @media (max-width: 71.99rem) {
   .tl-aside { grid-column: 2; }
 }
@@ -547,7 +559,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: .02em;
-  color: var(--grey-2);
+  color: var(--grey);
   text-align: center;
   padding-top: .6rem;
   writing-mode: vertical-rl;
@@ -735,7 +747,7 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: .02em;
   padding: .5rem .8rem;
   border: 1px solid var(--rule-soft);
-  color: var(--grey-2);
+  color: var(--grey);
 }
 .school.public { border-color: var(--rule); color: var(--bone-2); }
 .school.us { background: var(--dawn); color: var(--ink); border-color: var(--dawn); font-weight: 600; }
@@ -771,10 +783,7 @@ p:last-child { margin-bottom: 0; }
 .foot {
   border-top: 1px solid var(--rule);
   padding-block: 3.5rem 2.5rem;
-  display: grid;
-  gap: 2rem;
 }
-@media (min-width: 48rem) { .foot { grid-template-columns: 1fr auto; align-items: end; } }
 .foot-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
 /* ==========================================================================
@@ -871,10 +880,14 @@ p:last-child { margin-bottom: 0; }
   font-weight: 700;
   font-size: clamp(3rem, 9vw, 8rem);
   line-height: .9;
-  color: var(--ink-3);
+  /* Was --ink-3 (#1e242b) = 1.25:1, which read as a rendering fault rather
+     than restraint. #3f4a55 is ~2.9:1: present as a ghost numeral, but
+     legible as the thing the section is counting. */
+  color: #3f4a55;
   font-variant-numeric: tabular-nums;
   align-self: center;
   justify-self: end;
+  transition: color .4s var(--ease);
   padding-right: clamp(0px, 4vw, 4rem);
 }
 
@@ -912,4 +925,50 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 40rem) {
   .nav-prog #chapter-label { display: none; }
   .nav-prog .prog-track { width: 3.5rem; }
+}
+
+
+/* Footer sits on the same grid as everything above it. A previous
+   display:contents wrapper removed it from the page gutter entirely, so the
+   last screen a reader sees was the one element ignoring the site's alignment. */
+.foot-inner {
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 48rem) {
+  .foot-inner { grid-template-columns: 1fr auto; align-items: end; }
+}
+
+/* Left-aligned prose column, as a real class rather than an inline override. */
+.narrow--flush {
+  width: min(100%, 44rem);
+  margin-inline: 0;
+}
+
+
+/* Apparatus column facts. The third timeline track existed but held only a
+   64px source link in a 736px space — architecture without content. These are
+   sourced key/value pairs that give the full-width rule something to sit over. */
+.facts {
+  display: grid;
+  width: 100%;
+  max-width: 30rem;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: .1rem 1.25rem;
+  margin: 0 0 1rem;
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  line-height: 1.9;
+}
+.facts dt {
+  color: var(--grey);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.facts dd {
+  margin: 0;
+  color: var(--bone-2);
+  text-align: right;
+  border-bottom: 1px solid var(--rule-soft);
 }

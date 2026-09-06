@@ -341,6 +341,8 @@ function fillTimelines() {
         </div>
       </div>
       <div class="tl-aside">
+        ${h.aside ? `<dl class="facts">${h.aside
+          .map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>` : ''}
         ${h.src ? `<a class="src" href="${h.src}" target="_blank" rel="noopener">Source</a>` : ''}
         ${h.note ? `<p class="note">${h.note}</p>` : ''}
       </div>
