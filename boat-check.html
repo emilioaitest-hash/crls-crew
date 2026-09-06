@@ -20,7 +20,7 @@
 <script type="module">
 import * as THREE from 'three';
 import { SPEC, buildHull, buildDeck, buildCockpitWell, buildCoxWell } from '/src/boat/pocock.js';
-import { buildRiggers, buildSlidesAndSeats, buildFittings, buildOars, buildCoxFittings } from '/src/boat/hardware.js';
+import { buildRiggers, buildSlidesAndSeats, buildFittings, buildFoils, buildOars, buildCoxFittings } from '/src/boat/hardware.js';
 
 const err = document.getElementById('err');
 window.addEventListener('error', e => { err.textContent = 'ERROR: ' + e.message; });
@@ -98,6 +98,7 @@ const parts = {
   riggers: new THREE.Mesh(buildRiggers(), matBlack),
   seats: new THREE.Mesh(buildSlidesAndSeats(), matMetal),
   fittings: new THREE.Mesh(buildFittings(), matWhite),
+  foils: new THREE.Mesh(buildFoils(), matCarbon),
   oars: new THREE.Mesh(buildOars(), matBlade),
   coxfit: new THREE.Mesh(buildCoxFittings(), matBlack),
 };
@@ -110,6 +111,9 @@ scene.add(boat);
 const key = new THREE.DirectionalLight(0xffffff, 1.25); key.position.set(4, 7, 5); scene.add(key);
 const rim = new THREE.DirectionalLight(0xbcd4ff, 1.1); rim.position.set(-6, 2.5, -5); scene.add(rim);
 const fill = new THREE.DirectionalLight(0xf2f6ff, 0.30); fill.position.set(1, -2, 4); scene.add(fill);
+// Sky/ground hemisphere. Without it the cockpit well and the undersides of the
+// decks receive no light at all and read as holes cut in the boat.
+const hemi = new THREE.HemisphereLight(0xdbe7f4, 0x2b3038, 1.2); scene.add(hemi);
 
 const VIEWS = {
   side:        {pos:[0, 0.0, 9.6],    look:[0,0,0],       fov:46},

@@ -19,7 +19,7 @@ import {
   SPEC, buildHull, buildDeck, buildCockpitWell, buildCoxWell,
 } from './boat/pocock.js';
 import {
-  buildRiggers, buildSlidesAndSeats, buildFittings, buildOars, buildCoxFittings,
+  buildRiggers, buildSlidesAndSeats, buildFittings, buildFoils, buildOars, buildCoxFittings,
 } from './boat/hardware.js';
 import {
   HISTORY, SEASONS, MILESTONES_2026, FLEET, RIVALS, ARCHIVE,
@@ -62,6 +62,7 @@ function boatGeometry() {
       riggers: buildRiggers(),
       seats: buildSlidesAndSeats(),
       fittings: buildFittings(),
+      foils: buildFoils(),
       oars: buildOars(),
       coxfit: buildCoxFittings(),
     };
@@ -78,9 +79,12 @@ function makeBoat(renderer) {
       side: THREE.DoubleSide, envMapIntensity: 1.35,
     }),
     carbon: new THREE.MeshPhysicalMaterial({
-      color: 0x101318, roughness: 0.28, metalness: 0.55,
-      clearcoat: 0.85, clearcoatRoughness: 0.14,
-      side: THREE.DoubleSide, envMapIntensity: 1.1,
+      // Real exposed carbon under clearcoat is a dark grey with a visible
+      // sheen, not a black void. At 0x101318 the decks swallowed all light and
+      // the cockpit read as a hole in the boat.
+      color: 0x24282e, roughness: 0.34, metalness: 0.45,
+      clearcoat: 0.9, clearcoatRoughness: 0.16,
+      side: THREE.DoubleSide, envMapIntensity: 1.45,
     }),
     metal: new THREE.MeshStandardMaterial({
       color: 0xb4b9bf, roughness: 0.28, metalness: 0.92, envMapIntensity: 1.2,
@@ -108,6 +112,7 @@ function makeBoat(renderer) {
   group.add(new THREE.Mesh(g.riggers, M.black));
   group.add(new THREE.Mesh(g.seats, M.metal));
   group.add(new THREE.Mesh(g.fittings, M.white));
+  group.add(new THREE.Mesh(g.foils, M.carbon));
   group.add(new THREE.Mesh(g.oars, M.blade));
   group.add(new THREE.Mesh(g.coxfit, M.black));
   group.position.x = -SPEC.loa / 2;
@@ -212,7 +217,8 @@ function initFleet() {
   const key = new THREE.DirectionalLight(0xffffff, 2.3); key.position.set(5, 8, 5);
   const rim = new THREE.DirectionalLight(0xbcd4ff, 1.9); rim.position.set(-6, 3, -5);
   const fill = new THREE.DirectionalLight(0xe8eef7, 0.8); fill.position.set(0, -2, 6);
-  scene.add(key, rim, fill);
+  const hemi = new THREE.HemisphereLight(0xdbe7f4, 0x2b3038, 1.2);
+  scene.add(key, rim, fill, hemi);
 
   const cam = new THREE.PerspectiveCamera(34, 1, 0.05, 200);
   let viewName = 'quarter';

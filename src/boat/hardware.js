@@ -294,7 +294,7 @@ function contouredSeat(x, y) {
 }
 
 /* ------------------------------------------------------------------ *
- * Fittings: bow ball, integrated fin + rudder, bow number clip
+ * Fittings: bow ball and bow number clip (white / hull-coloured parts)
  * ------------------------------------------------------------------ */
 export function buildFittings() {
   const geos = [];
@@ -304,6 +304,20 @@ export function buildFittings() {
   const ball = new THREE.SphereGeometry(SPEC.bowBallDia / 2, 20, 16);
   ball.translate(-0.010, sheerZ(0) - 0.058, 0);
   geos.push(ball);
+
+  // Bow number clip on the foredeck
+  geos.push(box(0.012, 0.070, 0.008, 0.040 * L, sheerZ(0.040) + 0.045, 0));
+
+  return mergeGeos(geos);
+}
+
+/* ------------------------------------------------------------------ *
+ * Fin and rudder — carbon foils, returned separately so they can take
+ * the carbon material instead of the white hull paint.
+ * ------------------------------------------------------------------ */
+export function buildFoils() {
+  const geos = [];
+  const L = SPEC.loa;
 
   // Integrated fin + rudder: continuous foil, no gap (Pocock design point)
   const finT = 0.845;
@@ -337,9 +351,6 @@ export function buildFittings() {
   rg.rotateY(Math.PI / 2);
   rg.translate(finX + 0.246, finZ - 0.006, 0.0028);
   geos.push(rg);
-
-  // Bow number clip on the foredeck
-  geos.push(box(0.012, 0.070, 0.008, 0.040 * L, sheerZ(0.040) + 0.045, 0));
 
   return mergeGeos(geos);
 }
