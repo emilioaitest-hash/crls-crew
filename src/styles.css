@@ -897,7 +897,7 @@ p:last-child { margin-bottom: 0; }
   /* Was --ink-3 (#1e242b) = 1.25:1, which read as a rendering fault rather
      than restraint. #3f4a55 is ~2.9:1: present as a ghost numeral, but
      legible as the thing the section is counting. */
-  color: #47535f;
+  color: #576573;
   font-variant-numeric: tabular-nums;
   text-shadow: 0 0 90px var(--river);
   align-self: center;
