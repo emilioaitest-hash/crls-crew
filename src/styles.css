@@ -326,13 +326,15 @@ p:last-child { margin-bottom: 0; }
 }
 .hero-title .l > span {
   display: block;
-  transform: translateY(105%);
   transition: transform 1.05s cubic-bezier(.22, 1, .36, 1);
   will-change: transform;
 }
-.hero-title .l > span.shown { transform: none; }
+/* Only hide the lines when JS is present to animate them back in. Without it
+   the headline is simply visible, rather than parked off-screen forever. */
+.js-reveal .hero-title .l > span { transform: translateY(105%); }
+.js-reveal .hero-title .l > span.shown { transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .hero-title .l > span { transform: none; transition: none; }
+  .js-reveal .hero-title .l > span { transform: none; transition: none; }
 }
 
 .hero-sub {

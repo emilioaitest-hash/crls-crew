@@ -525,6 +525,9 @@ function initScroll(hero) {
       if (r.top >= innerHeight || r.bottom <= 0) { still.push(el); continue; }
       const target = +el.dataset.count;
       if (reduced) { el.textContent = target.toLocaleString(); continue; }
+      // The markup ships the real number so a no-JS reader sees it. Reset to
+      // zero here, at the moment the count actually starts.
+      el.textContent = '0';
       const t0 = performance.now(), dur = 1400;
       // Guarded by a timeout so a throttled tab still lands on the real number
       // instead of freezing part-way through the count.
