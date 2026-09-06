@@ -67,7 +67,8 @@
   --t-lead:  clamp(1.15rem, 1.65vw, 1.5rem);
   --t-body:  clamp(1rem, 1.15vw, 1.125rem);
   --t-small: 0.8125rem;
-  --t-micro: 0.6875rem;
+  --t-micro: 0.75rem;      /* 12px: the legibility floor for mono */
+  --t-nano:  0.6875rem;    /* 11px, for chapter marks only */
 
   /* ---- measure & rhythm -------------------------------------------- */
   --measure: 34rem;
@@ -106,7 +107,7 @@ p:last-child { margin-bottom: 0; }
 /* ==========================================================================
    layout primitives
    ========================================================================== */
-.wrap { width: min(100% - var(--gutter) * 2, 84rem); margin-inline: auto; }
+.wrap { width: min(100% - var(--gutter) * 2, 108rem); margin-inline: auto; }
 .narrow { width: min(100% - var(--gutter) * 2, var(--measure)); margin-inline: auto; }
 .section { padding-block: var(--stack); position: relative; }
 
@@ -119,8 +120,12 @@ p:last-child { margin-bottom: 0; }
   align-items: start;
 }
 @media (min-width: 62rem) {
-  .split { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+  .split { grid-template-columns: minmax(0, 0.9fr) minmax(0, 34rem) minmax(0, 0.55fr); }
   .split > :first-child { position: sticky; top: 22vh; }
+}
+/* Two-child splits still fill the row rather than stranding a third track */
+@media (min-width: 62rem) {
+  .split > :nth-child(2):last-child { grid-column: 2 / -1; max-width: 44rem; }
 }
 
 .rule { height: 1px; background: var(--rule); border: 0; margin: 0; }
@@ -161,6 +166,8 @@ p:last-child { margin-bottom: 0; }
 }
 .h1 { font-size: var(--t-h1); }
 .h2 { font-size: var(--t-h2); }
+/* The two headings the story actually turns on get display scale */
+.h2--climax { font-size: var(--t-h1); line-height: .88; }
 .h3 {
   font-family: var(--display);
   font-size: var(--t-h3);
@@ -203,13 +210,14 @@ p:last-child { margin-bottom: 0; }
 
 .note {
   font-family: var(--mono);
-  font-size: var(--t-micro);
-  line-height: 1.6;
-  letter-spacing: 0.02em;
-  color: var(--grey-2);
+  font-size: 0.8125rem;          /* 13px — was 11px, below the legible floor */
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: var(--grey);            /* 6.2:1 on ink — was grey-2 at 2.9:1, failed AA */
   border-left: 1px solid var(--rule);
   padding-left: 0.9rem;
   margin-top: 1rem;
+  max-width: 46ch;               /* was running to 124 characters */
   text-transform: none;
 }
 
@@ -382,13 +390,18 @@ p:last-child { margin-bottom: 0; }
    ========================================================================== */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(1.4rem);
-  transition: opacity .9s var(--ease), transform .9s var(--ease);
+  transform: translateY(1.1rem);
+  /* 0.55s, not 0.9s: this fires on ~70 elements, and at 0.9s a fast scroll
+     leaves the reader looking at half-opacity text the whole way down. */
+  transition: opacity .55s var(--ease), transform .55s var(--ease);
 }
 [data-reveal].in { opacity: 1; transform: none; }
-[data-reveal][data-delay="1"] { transition-delay: .08s; }
-[data-reveal][data-delay="2"] { transition-delay: .16s; }
-[data-reveal][data-delay="3"] { transition-delay: .24s; }
+[data-reveal][data-delay="1"] { transition-delay: .06s; }
+[data-reveal][data-delay="2"] { transition-delay: .12s; }
+[data-reveal][data-delay="3"] { transition-delay: .18s; }
+/* Rows cascade rather than flashing in as a block */
+.tl-item[data-reveal] { transition-delay: calc(var(--i, 0) * 55ms); }
+.result[data-reveal]  { transition-delay: calc(var(--i, 0) * 55ms); }
 
 /* ==========================================================================
    timeline
@@ -396,10 +409,26 @@ p:last-child { margin-bottom: 0; }
 .timeline { position: relative; }
 .tl-item {
   display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: clamp(1.25rem, 4vw, 3.5rem);
+  /* Year | prose (measured) | apparatus. The third track is what stops the
+     full-width border-top from drawing a rule across ~690px of nothing: the
+     sources and caveats now live out there instead of under the prose. */
+  grid-template-columns: 5.5rem minmax(0, 34rem);
+  gap: clamp(1.25rem, 3vw, 3rem);
   padding-block: clamp(2.25rem, 5vh, 4rem);
   border-top: 1px solid var(--rule-soft);
+}
+@media (min-width: 72rem) {
+  .tl-item { grid-template-columns: 6rem minmax(0, 34rem) minmax(0, 1fr); }
+}
+.tl-aside {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  align-items: flex-start;
+  padding-top: .4rem;
+}
+@media (max-width: 71.99rem) {
+  .tl-aside { grid-column: 2; }
 }
 .tl-item:first-child { border-top: 0; }
 .tl-year {
@@ -509,7 +538,7 @@ p:last-child { margin-bottom: 0; }
 .bar-col.dim .bar { background: var(--ink-2); }
 .bar-year {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: .02em;
   color: var(--grey-2);
   text-align: center;
@@ -762,4 +791,118 @@ p:last-child { margin-bottom: 0; }
   }
   [data-reveal] { opacity: 1; transform: none; }
   .bar { transform: scaleY(1); }
+}
+
+
+/* ==========================================================================
+   The 1929 hinge — staged full-bleed
+   This is the argument of the site: public and private schools raced the
+   fours in one heat. It was previously a timeline row indistinguishable from
+   the five around it.
+   ========================================================================== */
+.hinge {
+  background: var(--ink-2);
+  border-block: 1px solid var(--rule-soft);
+  padding-block: clamp(4.5rem, 13vh, 9rem);
+  margin-block: var(--stack);
+}
+.hinge-year {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--dawn);
+  margin-bottom: 1.75rem;
+}
+.hinge-line {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: var(--t-h1);
+  line-height: .88;
+  letter-spacing: -.015em;
+  text-transform: uppercase;
+  max-width: 16ch;
+}
+.hinge-line em { font-style: normal; color: var(--dawn); }
+.hinge-body { max-width: 40rem; margin-top: 2rem; }
+
+/* ==========================================================================
+   The sixty-year silence — the one place where empty space IS the content
+   ========================================================================== */
+.silence {
+  min-height: 165vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding-block: clamp(3rem, 8vh, 6rem);
+}
+.silence-rule {
+  position: relative;
+  width: 1px;
+  justify-self: start;
+  margin-left: clamp(0px, 6vw, 7rem);
+  background: var(--rule);
+  overflow: hidden;
+}
+.silence-rule i {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: var(--fill, 0%);
+  background: linear-gradient(var(--dawn), var(--dawn-lit));
+  transition: height .1s linear;
+}
+.silence-marks {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  letter-spacing: .16em;
+  color: var(--grey-2);
+  padding-top: 1.5rem;
+}
+.silence-count {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(3rem, 9vw, 8rem);
+  line-height: .9;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  align-self: center;
+  justify-self: end;
+  padding-right: clamp(0px, 4vw, 4rem);
+}
+
+/* ==========================================================================
+   Thesis callout — $0 carried through the page, not saved for the end
+   ========================================================================== */
+.thesis {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1rem 1.75rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+  border-block: 1px solid var(--rule);
+  margin-block: clamp(2.5rem, 6vh, 4.5rem);
+}
+.thesis .amount {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  line-height: .82;
+  color: var(--dawn);
+  font-variant-numeric: tabular-nums;
+}
+.thesis .what {
+  font-size: var(--t-lead);
+  color: var(--bone);
+  max-width: 32ch;
+}
+
+/* Hero: the thesis stat is not just another number */
+.hero-stat.is-thesis .n { color: var(--dawn); }
+.hero-stat.is-thesis .l { color: var(--dawn); opacity: .85; }
+
+/* Mobile: the chapter readout must not clip at the viewport edge */
+@media (max-width: 40rem) {
+  .nav-prog #chapter-label { display: none; }
+  .nav-prog .bar { width: 3.5rem; }
 }

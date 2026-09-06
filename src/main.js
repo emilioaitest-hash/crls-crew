@@ -325,21 +325,26 @@ function fillTimelines() {
   const ret = document.getElementById('timeline-return');
   if (!early || !ret) return;
 
-  const item = (h) => `
-    <article class="tl-item${h.pull ? ' pull' : ''}" data-reveal>
+  const item = (h, i) => `
+    <article class="tl-item${h.pull ? ' pull' : ''}" data-reveal style="--i:${i}">
       <div class="tl-year">${h.year}</div>
       <div>
         <h3 class="tl-title">${h.title}</h3>
         <div class="tl-body">
           <p>${h.body.replace(/\s+/g, ' ').trim()}</p>
-          ${h.note ? `<p class="note">${h.note}</p>` : ''}
-          ${h.src ? `<a class="src" href="${h.src}" target="_blank" rel="noopener" style="display:inline-block;margin-top:.9rem">Source</a>` : ''}
         </div>
+      </div>
+      <div class="tl-aside">
+        ${h.src ? `<a class="src" href="${h.src}" target="_blank" rel="noopener">Source</a>` : ''}
+        ${h.note ? `<p class="note">${h.note}</p>` : ''}
       </div>
     </article>`;
 
   const cut = HISTORY.findIndex((h) => h.year === '1978');
-  early.innerHTML = HISTORY.slice(0, cut).map(item).join('');
+  // The 1929 "one heat" entry is staged as its own full-bleed section, so it is
+  // filtered out here rather than repeated as an ordinary timeline row.
+  const isHinge = (h) => h.pull && h.year === '1929';
+  early.innerHTML = HISTORY.slice(0, cut).filter((h) => !isHinge(h)).map(item).join('');
   ret.innerHTML = HISTORY.slice(cut).map(item).join('');
 }
 
@@ -372,8 +377,8 @@ function fillResults() {
   const el = document.getElementById('results');
   if (!el) return;
   const ord = (n) => (n === 1 ? 'st' : n === 2 ? 'nd' : n === 3 ? 'rd' : 'th');
-  el.innerHTML = MILESTONES_2026.map((m) => `
-    <article class="result" data-reveal>
+  el.innerHTML = MILESTONES_2026.map((m, i) => `
+    <article class="result" data-reveal style="--i:${i}">
       <div class="result-head">
         ${m.place ? `<div class="result-place">${m.place}<sup>${ord(m.place)}</sup></div>` : '<div></div>'}
         ${m.time ? `<div class="result-time">${m.time}</div>` : ''}
@@ -484,10 +489,29 @@ function initScroll(hero) {
     counters = still;
   };
 
+  // The sixty-year gap: a rule that fills and a year count that climbs from
+  // 1929 to 1989 as the section passes. The empty scroll IS the content here,
+  // so it needs something to measure itself against.
+  const silenceRule = document.getElementById('silence-rule');
+  const silenceCount = document.getElementById('silence-count');
+  const silenceYears = document.getElementById('silence-years');
+  const gapSection = document.getElementById('gap');
+  function updateSilence() {
+    if (!gapSection || !silenceRule) return;
+    const r = gapSection.getBoundingClientRect();
+    const span = r.height - innerHeight;
+    const p = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+    silenceRule.firstElementChild.style.setProperty('--fill', (p * 100).toFixed(1) + '%');
+    const yr = Math.round(1929 + p * 60);
+    if (silenceCount) silenceCount.textContent = yr;
+    if (silenceYears) silenceYears.textContent = (yr - 1929) + ' years';
+  }
+
   function onScroll(y) {
     revealVisible();
     maybeChart();
     maybeCount();
+    updateSilence();
     const max = document.body.scrollHeight - innerHeight;
     const p = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
     if (prog) prog.style.setProperty('--p', (p * 100).toFixed(2) + '%');
