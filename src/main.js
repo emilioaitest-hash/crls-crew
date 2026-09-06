@@ -437,6 +437,22 @@ function fillFleet() {
       .map(([k, v]) => `<tr><th scope="row">${k}</th><td>${v}</td></tr>`)
       .join('');
   }
+
+  // The rest of the fleet. Only three shells are named anywhere in the
+  // program's public record, all in one race-day lineup, so the roster shows
+  // exactly what that source says and marks the rest as not yet modelled.
+  const r = document.getElementById('fleet-roster');
+  if (r) {
+    r.innerHTML = FLEET.map((b) => `
+      <li class="boat${b.status === 'built' ? ' is-built' : ''}">
+        <span class="boat-swatch" data-hull="${(b.hull || '').toLowerCase()}" aria-hidden="true"></span>
+        <span class="boat-id">
+          <b>${b.name}</b>
+          <em>${b.hull} hull${b.model ? ` &middot; ${b.model}` : ''}</em>
+        </span>
+        <span class="boat-state">${b.status === 'built' ? 'Modelled' : 'Not yet modelled'}</span>
+      </li>`).join('');
+  }
 }
 
 function fillField() {

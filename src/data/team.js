@@ -300,10 +300,22 @@ export const VOICE = [
 /* ------------------------------------------------------------------ *
  * The fleet
  * ------------------------------------------------------------------ */
+/**
+ * The fleet, as the team itself names it.
+ *
+ * Source: the coach's race-day lineup in "CRLS Crew - 5/23/2025 - NEIRA/MPSRA
+ * Update #3", which assigns boats to crews as
+ *   "Boat: | Wylde (white) | Og Res (black) | Usain (white)".
+ *
+ * That post is the only place in the program's entire public record where
+ * individual shells are named — the site has no fleet page and no christening
+ * posts. Builder and model are known for Wylde only; the others are listed with
+ * what the source actually says and nothing more.
+ */
 export const FLEET = [
   {
-    id: 'seldon-wylde',
-    name: 'Seldon Wylde',
+    id: 'wylde',
+    name: 'Wylde',
     builder: 'Pocock',
     model: 'Hypercarbon Comp K4+',
     type: 'Coxed four',
@@ -320,13 +332,32 @@ export const FLEET = [
       ['Spread', '85 cm'],
       ['Slide', '81 cm'],
     ],
+    lineup: 'Girls 1st novice four, 23 May 2025',
     notes: `A bow-loader: the coxswain lies flat under the foredeck with their head just
     above the deck line, which drops the boat's centre of gravity and makes it easier to
     set. The stern is a closed deck running clean to a point. The wing rigger bolts across
     the top of both gunwales rather than to the sides — Pocock's argument is that it
     spreads the load better and keeps the hardware out of the water.`,
     src: SOURCES.pocock,
+  },,
+  {
+    id: 'og-res',
+    name: 'Og Res',
+    hull: 'Black',
+    type: 'Coxed four',
+    status: 'named-only',
+    lineup: 'Girls 2nd novice four, 23 May 2025',
+    src: SOURCES.crls,
   },
+  {
+    id: 'usain',
+    name: 'Usain',
+    hull: 'White',
+    type: 'Coxed four',
+    status: 'named-only',
+    lineup: 'Girls 3rd novice four, 23 May 2025',
+    src: SOURCES.crls,
+  }
 ];
 
 /* ------------------------------------------------------------------ *

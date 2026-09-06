@@ -1,5 +1,5 @@
 /**
- * Pocock Hypercarbon Comp K4+  —  "Seldon Wylde"
+ * Pocock Hypercarbon Comp K4+  —  "Wylde"
  * Cambridge Rindge & Latin School
  *
  * Parametric hull lofted from station geometry. Metres throughout.
