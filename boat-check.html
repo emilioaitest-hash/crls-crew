@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Comp K4+ — geometry check</title>
+<style>
+  html,body{margin:0;height:100%;background:#0b0d10;color:#c9d1d9;font:13px/1.4 ui-monospace,SFMono-Regular,Menlo,monospace}
+  #c{display:block;width:100vw;height:100vh}
+  #hud{position:fixed;top:10px;left:12px;z-index:5;opacity:.75;white-space:pre}
+  #err{position:fixed;bottom:10px;left:12px;color:#ff7b72;white-space:pre;max-width:90vw}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"></div>
+<div id="err"></div>
+<script type="importmap">
+{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { SPEC, buildHull, buildDeck, buildCockpitWell, buildCoxWell } from '/src/boat/pocock.js';
+import { buildRiggers, buildSlidesAndSeats, buildFittings, buildOars, buildCoxFittings } from '/src/boat/hardware.js';
+
+const err = document.getElementById('err');
+window.addEventListener('error', e => { err.textContent = 'ERROR: ' + e.message; });
+
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, preserveDrawingBuffer:true});
+renderer.setPixelRatio(Math.min(2, devicePixelRatio));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.0;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x191d23);
+
+// --- environment: a small procedural studio so surfaces actually read ---
+// A white hull against a black void has nothing to reflect, which is why the
+// earlier renders looked like flat cutouts. This builds a gradient environment
+// with a bright overhead band, which is what gives a glossy composite hull its
+// long specular highlight along the sheer.
+function studioEnv(renderer) {
+  const c = document.createElement('canvas');
+  c.width = 32; c.height = 256;
+  const g = c.getContext('2d');
+  const grad = g.createLinearGradient(0, 0, 0, 256);
+  grad.addColorStop(0.00, '#eef4fb');   // zenith
+  grad.addColorStop(0.38, '#cdd9e6');
+  grad.addColorStop(0.50, '#ffffff');   // horizon band = the key highlight
+  grad.addColorStop(0.58, '#aab6c2');
+  grad.addColorStop(1.00, '#6f7a85');   // neutral bounce, NOT a warm dark tint
+  g.fillStyle = grad; g.fillRect(0, 0, 32, 256);
+  const tex = new THREE.CanvasTexture(c);
+  tex.mapping = THREE.EquirectangularReflectionMapping;
+  tex.colorSpace = THREE.SRGBColorSpace;
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const env = pmrem.fromEquirectangular(tex).texture;
+  pmrem.dispose(); tex.dispose();
+  return env;
+}
+const envMap = studioEnv(renderer);
+scene.environment = envMap;
+
+const matHull = new THREE.MeshPhysicalMaterial({
+  color: 0xffffff, roughness: 0.12, metalness: 0.0,
+  clearcoat: 1.0, clearcoatRoughness: 0.06,
+  side: THREE.DoubleSide, envMapIntensity: 1.35,
+});
+const matCarbon = new THREE.MeshPhysicalMaterial({
+  color: 0x101318, roughness: 0.28, metalness: 0.55,
+  clearcoat: 0.85, clearcoatRoughness: 0.14,
+  side: THREE.DoubleSide, envMapIntensity: 1.1,
+});
+const matMetal = new THREE.MeshStandardMaterial({
+  color: 0xb4b9bf, roughness: 0.28, metalness: 0.92, envMapIntensity: 1.2,
+});
+const matBlack = new THREE.MeshPhysicalMaterial({
+  color: 0x14171b, roughness: 0.34, metalness: 0.30,
+  clearcoat: 0.6, clearcoatRoughness: 0.25, envMapIntensity: 1.0,
+});
+const matWhite = new THREE.MeshStandardMaterial({
+  color: 0xffffff, roughness: 0.22, metalness: 0.0, envMapIntensity: 1.2,
+});
+// CRLS black blades — the team races black with the falcon mark
+const matBlade = new THREE.MeshPhysicalMaterial({
+  color: 0x0c0e11, roughness: 0.30, metalness: 0.15,
+  clearcoat: 0.9, clearcoatRoughness: 0.12,
+  side: THREE.DoubleSide, envMapIntensity: 1.15,
+});
+
+const boat = new THREE.Group();
+const parts = {
+  hull: new THREE.Mesh(buildHull(), matHull),
+  deck: new THREE.Mesh(buildDeck(), matCarbon),
+  cockpit: new THREE.Mesh(buildCockpitWell(), matCarbon),
+  cox: new THREE.Mesh(buildCoxWell(), matCarbon),
+  riggers: new THREE.Mesh(buildRiggers(), matBlack),
+  seats: new THREE.Mesh(buildSlidesAndSeats(), matMetal),
+  fittings: new THREE.Mesh(buildFittings(), matWhite),
+  oars: new THREE.Mesh(buildOars(), matBlade),
+  coxfit: new THREE.Mesh(buildCoxFittings(), matBlack),
+};
+for (const m of Object.values(parts)) boat.add(m);
+boat.position.x = -SPEC.loa/2;
+scene.add(boat);
+
+// lighting
+// The environment does most of the work; these just add direction and a rim.
+const key = new THREE.DirectionalLight(0xffffff, 1.25); key.position.set(4, 7, 5); scene.add(key);
+const rim = new THREE.DirectionalLight(0xbcd4ff, 1.1); rim.position.set(-6, 2.5, -5); scene.add(rim);
+const fill = new THREE.DirectionalLight(0xf2f6ff, 0.30); fill.position.set(1, -2, 4); scene.add(fill);
+
+const VIEWS = {
+  side:        {pos:[0, 0.0, 9.6],    look:[0,0,0],       fov:46},
+  quarter:     {pos:[5.4, 2.3, 5.6],  look:[0,-0.10,0],   fov:42},
+  plan:        {pos:[0, 9.2, 0.01],   look:[0,0,0],       fov:46},
+  bow:         {pos:[-5.4, 0.55, 0.9],look:[-3.4,-0.02,0],fov:34},
+  stern:       {pos:[5.6, 0.60, 0.9], look:[3.6,-0.02,0], fov:34},
+  cockpit:     {pos:[1.5, 0.95, 1.5], look:[0.35,-0.08,0],fov:44},
+  rigger:      {pos:[0.05, 0.62, 1.35],look:[-0.35,0.02,0.55], fov:40},
+  bowcox:      {pos:[-4.6, 0.72, 1.15],look:[-5.05,-0.04,0],fov:42},
+  blade:       {pos:[-1.5, 0.45, 1.9],look:[-2.0,0.02,1.25],fov:36},
+};
+
+const cam = new THREE.PerspectiveCamera(32, innerWidth/innerHeight, 0.05, 200);
+function setView(name){
+  const v = VIEWS[name] || VIEWS.quarter;
+  cam.fov = v.fov; cam.position.set(...v.pos); cam.lookAt(...v.look); cam.updateProjectionMatrix();
+  document.getElementById('hud').textContent =
+    `view: ${name}\nLOA ${SPEC.loa} m   beam ${SPEC.beamMax} m   spread ${SPEC.spread} m\n` +
+    `tris: ${Object.values(parts).reduce((n,m)=>n+(m.geometry.index?m.geometry.index.count/3:0),0)|0}`;
+}
+window.setView = setView;
+window.showOnly = (names) => {
+  const set = new Set(Array.isArray(names)?names:[names]);
+  for (const [k,m] of Object.entries(parts)) m.visible = set.has('all') || set.has(k);
+};
+window.setWire = (on) => { for (const m of Object.values(parts)) m.material.wireframe = !!on; };
+
+function resize(){
+  const w = innerWidth, h = innerHeight;
+  renderer.setSize(w,h,false);
+  cam.aspect = w/h; cam.updateProjectionMatrix();
+}
+addEventListener('resize', resize); resize();
+setView(new URLSearchParams(location.search).get('view') || 'quarter');
+
+renderer.render(scene, cam);
+function loop(){ renderer.render(scene, cam); requestAnimationFrame(loop); }
+loop();
+window.__ready = true;
+</script>
+</body>
+</html>

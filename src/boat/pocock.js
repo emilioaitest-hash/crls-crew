@@ -73,9 +73,14 @@ export const SPEC = {
   seatStations: [0.4155, 0.5052, 0.5949, 0.6846], // 1.22 m apart
   coxStation: 0.103,
 
-  /* --- rigging --- */
+  /* --- rigging ---
+   * oarlockHeight is measured from the SEAT TOP, which is how riggers are
+   * actually set up ("height above the seat", Pocock's historical standard
+   * 6.25 in = 15.9 cm; modern sweep 16-19 cm). It is NOT measured from the
+   * gunwale — treating it as a gunwale offset put the pins 35 cm above the
+   * seat, roughly double reality, which the placement validator caught. */
   spread: 0.850,       // centreline to pin
-  oarlockHeight: 0.170,
+  oarlockHeight: 0.170,   // ABOVE THE SEAT TOP
   slideLength: 0.810,  // Pocock catalogue: 32 in tracks
   trackGauge: 0.285,
   stretcherAngle: 40 * Math.PI / 180,
@@ -251,6 +256,25 @@ export function sectionPoint(t, s) {
 
   const z = zs - D * Math.pow(Math.cos(th), e);
   return [y, z];
+}
+
+/* ------------------------------------------------------------------ *
+ * Reference heights used by both the hull and the hardware.
+ * Declared here (before the mesh builders) so they are initialised by the
+ * time any module-level geometry construction reads them.
+ * ------------------------------------------------------------------ */
+
+/** Seat top height at a station. */
+export function seatTopZ(t) {
+  return keelZ(t) + 0.130;
+}
+
+/**
+ * Height of the oarlock pin. Measured from the SEAT TOP, which is how rigging
+ * is actually specified — not from the gunwale.
+ */
+export function pinZ(t) {
+  return seatTopZ(t) + SPEC.oarlockHeight;
 }
 
 /* ------------------------------------------------------------------ *
@@ -432,11 +456,6 @@ export function tube(a, b, r, seg = 12) {
 }
 
 export const V = (x, y, z) => new THREE.Vector3(x, y, z);
-
-/** Seat top height at a station. */
-export function seatTopZ(t) {
-  return keelZ(t) + 0.130;
-}
 
 /** Section area below a given waterline height — used by the validator. */
 export function sectionAreaBelow(t, zw, M = 500) {
