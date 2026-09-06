@@ -226,6 +226,12 @@ export const MILESTONES_2026 = [
     cox: 'Ada LaMaster',
     time: '7:27.54',
     place: 3,
+    // Road to the final, from the regatta's own timing data.
+    road: [
+      ['Time trial', '7:11.11', 3],
+      ['Semifinal', '7:41.01', 2],
+      ['Final A', '7:27.54', 3],
+    ],
     src: SOURCES.cambridgeDay,
   },
   {
@@ -235,6 +241,11 @@ export const MILESTONES_2026 = [
     cox: 'Son Schneider',
     time: '6:44.62',
     place: 3,
+    road: [
+      ['Time trial', '6:28.31', 2],
+      ['Semifinal', '7:00.06', 2],
+      ['Final A', '6:44.62', 3],
+    ],
     src: SOURCES.cambridgeDay,
   },
   {

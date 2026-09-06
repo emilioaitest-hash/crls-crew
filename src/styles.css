@@ -1050,3 +1050,27 @@ p:last-child { margin-bottom: 0; }
   white-space: nowrap;
   pointer-events: none;
 }
+
+
+/* Road to the final. Three rounds over two days, from the regatta's own timing
+   data — which independently corroborates the crews reported in the press. */
+.road {
+  list-style: none;
+  margin: .25rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.road li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+}
+.r-round { color: var(--grey); letter-spacing: .1em; text-transform: uppercase; }
+.r-time  { color: var(--bone-2); font-variant-numeric: tabular-nums; }
+.r-place { color: var(--dawn); font-variant-numeric: tabular-nums; min-width: 2.5ch; text-align: right; }
+.road li:last-child .r-time { color: var(--bone); }

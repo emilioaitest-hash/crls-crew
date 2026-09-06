@@ -420,6 +420,8 @@ function fillResults() {
       </div>
       <h3>${m.title}</h3>
       <p>${m.detail}</p>
+      ${m.road ? `<ol class="road">${m.road.map(([round, time, place]) => `
+        <li><span class="r-round">${round}</span><span class="r-time">${time}</span><span class="r-place">${place}${ord(place)}</span></li>`).join('')}</ol>` : ''}
       ${m.crew ? `<div class="crew">${m.crew.map((c) => `<b>${c}</b>`).join(' · ')}${m.cox ? ` · cox <b>${m.cox}</b>` : ''}</div>` : ''}
       ${m.src ? `<a class="src" href="${m.src}" target="_blank" rel="noopener">Source</a>` : ''}
     </article>`).join('');
