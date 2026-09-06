@@ -125,7 +125,7 @@ p:last-child { margin-bottom: 0; }
 }
 /* Two-child splits still fill the row rather than stranding a third track */
 @media (min-width: 62rem) {
-  .split > :nth-child(2):last-child { grid-column: 2 / -1; max-width: 44rem; }
+  .split > :nth-child(2):last-child { grid-column: 2 / -1; max-width: 36rem; }
 }
 
 .rule { height: 1px; background: var(--rule); border: 0; margin: 0; }
@@ -599,7 +599,9 @@ p:last-child { margin-bottom: 0; }
   overflow: hidden;
 }
 @media (min-width: 60rem) {
-  .boat-stage { aspect-ratio: 24 / 9; }
+  /* 32:9 matches the object rather than framing it in empty ground: a coxed
+     four is 24:1 in plan, so a taller box just adds sky. */
+  .boat-stage { aspect-ratio: 32 / 9; }
 }
 #fleet-canvas {
   width: 100%;
@@ -971,4 +973,77 @@ p:last-child { margin-bottom: 0; }
   color: var(--bone-2);
   text-align: right;
   border-bottom: 1px solid var(--rule-soft);
+}
+
+
+/* The school chips are a list and should arrive as one. */
+.school { transition-delay: calc(var(--i, 0) * 28ms); }
+
+/* Three moments get a slower, separate curve so motion argues for what
+   arrived instead of announcing that a scroll tick fired. */
+.js-reveal .hinge-line,
+.js-reveal .thesis .amount,
+.js-reveal .quote {
+  transition-duration: .95s;
+  transition-timing-function: cubic-bezier(.16, 1, .3, 1);
+}
+
+
+/* ==========================================================================
+   The 1989/2000 revival, staged as a second banded moment so the 1929 hinge
+   does not read as a one-off. Smaller scale: it is the echo, not the thesis.
+   ========================================================================== */
+.hinge--minor { padding-block: clamp(3.5rem, 10vh, 7rem); }
+.hinge-line--minor { font-size: var(--t-h2); max-width: 18ch; }
+
+.progression {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+}
+@media (min-width: 48rem) {
+  .progression { grid-template-columns: repeat(4, 1fr); }
+}
+.progression li {
+  background: var(--ink-2);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.p-n {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: .85;
+  color: var(--dawn);
+  font-variant-numeric: tabular-nums;
+}
+.p-l {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+/* The 2020 season that did not happen, annotated on the bar rather than
+   stranded in the legend where nobody connects it to a 6px sliver. */
+.bar-none {
+  position: absolute;
+  bottom: 2.6rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--grey);
+  white-space: nowrap;
+  pointer-events: none;
 }

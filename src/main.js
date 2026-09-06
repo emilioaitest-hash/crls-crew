@@ -371,6 +371,7 @@ function fillChart() {
       : `${s.year}: no season`;
     return `
       <div class="bar-col${s.races ? '' : ' dim'}"${keyYears.has(s.year) ? ' data-key="1"' : ''} title="${label}">
+        ${s.races ? '' : '<div class="bar-none">No season</div>'}
         <div class="bar-track">
           <div class="bar" style="height:${h}%">
             <div class="won" style="--w:${w}%"></div>
@@ -413,9 +414,9 @@ function fillFleet() {
 function fillField() {
   const el = document.getElementById('field');
   if (!el) return;
-  el.innerHTML = RIVALS.map((r) => {
+  el.innerHTML = RIVALS.map((r, i) => {
     const cls = r.us ? 'school us' : r.kind === 'public' ? 'school public' : 'school';
-    return `<span class="${cls}">${r.name}</span>`;
+    return `<span class="${cls}" style="--i:${i}">${r.name}</span>`;
   }).join('');
 }
 
