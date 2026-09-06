@@ -590,8 +590,11 @@ p:last-child { margin-bottom: 0; }
 .boat-stage {
   position: relative;
   width: 100%;
-  aspect-ratio: 21 / 9;
-  min-height: 20rem;
+  /* On a phone the boat is shown broadside and small; a 16:9 frame with a
+     modest floor reads better than a letterbox squeezed to 350px wide.
+     min-height was fighting the aspect-ratio and producing a 1.09:1 box. */
+  aspect-ratio: 16 / 9;
+  min-height: 13rem;
   background:
     radial-gradient(80% 120% at 50% 42%, rgba(74,122,148,.16), transparent 70%),
     linear-gradient(180deg, #10151a 0%, #0a0c0e 100%);

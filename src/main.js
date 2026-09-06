@@ -181,6 +181,13 @@ function initHero() {
   }
   layout();
   addEventListener('resize', layout);
+  // The window may never resize while the element does — the fleet stage has a
+  // different aspect ratio on mobile and is below the fold at load, so a
+  // resize listener alone left the canvas with a stale desktop buffer.
+  if (typeof ResizeObserver === 'function') {
+    new ResizeObserver(() => layout()).observe(canvas);
+  }
+  requestAnimationFrame(() => layout());
 
   let progress = 0;
   const state = {
@@ -287,12 +294,31 @@ function initFleet() {
     raf = visible ? requestAnimationFrame(frame) : null;
   }
 
-  new IntersectionObserver((es) => {
-    visible = es[0].isIntersecting;
-    if (visible && !raf) { layout(); frame(); }
-  }, { rootMargin: '150px' }).observe(canvas);
+  // Visibility is measured, not observed: under smooth scroll an
+  // IntersectionObserver may never fire, which previously left this canvas
+  // unrendered and holding a stale buffer.
+  const checkVisible = () => {
+    const r = canvas.getBoundingClientRect();
+    const nowVisible = r.bottom > -150 && r.top < innerHeight + 150;
+    if (nowVisible && !raf) { layout(); frame(); }
+    visible = nowVisible;
+  };
+  addEventListener('scroll', checkVisible, { passive: true });
+  setInterval(checkVisible, 250);
+  checkVisible();
+
+  if (typeof IntersectionObserver === 'function') {
+    new IntersectionObserver(() => checkVisible(), { rootMargin: '150px' }).observe(canvas);
+  }
 
   addEventListener('resize', layout);
+  // The window may never resize while the element does — the fleet stage has a
+  // different aspect ratio on mobile and is below the fold at load, so a
+  // resize listener alone left the canvas with a stale desktop buffer.
+  if (typeof ResizeObserver === 'function') {
+    new ResizeObserver(() => layout()).observe(canvas);
+  }
+  requestAnimationFrame(() => layout());
 
   // drag to spin
   let down = false, lastX = 0;
